@@ -27,3 +27,17 @@
 .textContent p {
   margin-bottom: 1.5rem;
 }
+
+.imageContainer {
+  width: 100%;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.image {
+  width: calc(100% - 20px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  margin: 0 auto;
+}

@@ -1,19 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';   // (Unused here, but you mentioned it)
 import p5 from 'p5';
-import './background.css';        // Keep your existing CSS import
+import './background.css';
 
-// Example: function to parse your tree file (phylo.txt)
-// Adjust or remove if you have a different format/logic.
-async function loadTreeFile() {
-  const response = await fetch('src/assets/phylo.txt');
-  const text = await response.text();
-  // TODO: parse 'text' if it's in Newick or some other format
-  // For now, we'll just return the raw text or a dummy object
-  return text;
-}
-
-export default function PhyloBackground() {
+export default function PhyloExpansionBackground() {
   const sketchRef = useRef(null);
 
   useEffect(() => {
@@ -28,7 +17,7 @@ export default function PhyloBackground() {
 
       // ============= CONFIGURABLE PARAMETERS =============
       let MAX_DEPTH          = 5;       // Adjust to your liking
-      let SPHERE_RADIUS      = 200;     // Radius for the sphere surface
+      let SPHERE_RADIUS      = 300;     // Radius for the sphere surface
       let SPRING_REST_LEN    = 40;      // Desired parent–child distance
       let SPRING_STRENGTH    = 0.01;    // Spring constant
       let REPULSION_STRENGTH = 4000;    // Node–node repulsion factor
@@ -59,7 +48,8 @@ export default function PhyloBackground() {
         // parse realTreeData as needed, or build your tree from it
         // For this example, we’ll keep the existing procedural approach.
 
-        p.createCanvas(600, 600, p.WEBGL);
+        const container = sketchRef.current.parentElement;
+p.createCanvas(container.clientWidth, container.clientHeight, p.WEBGL);
 
         // Position camera so we can see everything
         p.camera(0, 0, 900, 0, 0, 0, 0, 1, 0);
@@ -303,9 +293,22 @@ export default function PhyloBackground() {
     };
   }, []);
 
+  const handleResize = () => {
+    if (!p5Instance) return;
+    const container = sketchRef.current.parentElement;
+    p5Instance.resizeCanvas(container.clientWidth, container.clientHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className="background-container">
-      <div ref={sketchRef} style={{ width: '100%', height: '100%' }} />
+      <div ref={sketchRef} />
     </div>
   );
 }

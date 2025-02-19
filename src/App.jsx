@@ -4,6 +4,9 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Background from './components/Background/Background';
 import PhyloBackground from './components/Background/PhyloBackground';
+import PhyloExpansionBackground from './components/Background/PhyloExpansionBackground';
+import DragonSphereBackground from './components/Background/dragonBackground';
+import OrbitalSimBackground from './components/Background/OrbitalSimBackground';
 import CV from './components/CV/CV';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
@@ -17,6 +20,19 @@ import './App.css';
 function BackgroundSelector() {
   const location = useLocation();
   const isESPMPage = location.pathname.includes('espm112l') || location.pathname.includes('_posts');
+  const isContactPage = location.pathname === '/contact';
+  const isProjectsPage = location.pathname === '/projects';
+  const isAboutPage = location.pathname === '/about';
+
+  if (isContactPage) {
+    return <PhyloExpansionBackground />;
+  }
+  if (isProjectsPage) {
+    return <DragonSphereBackground />;
+  }
+  if (isAboutPage) {
+    return <OrbitalSimBackground />;
+  }
   return isESPMPage ? <PhyloBackground /> : <Background />;
 }
 

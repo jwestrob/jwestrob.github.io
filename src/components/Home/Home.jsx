@@ -14,11 +14,11 @@ const Home = () => {
           <h1 className={styles.title}>Hi, I'm Jacob West-Roberts</h1>
           <h2 className={styles.subtitle}>Computational Biologist & Environmental Scientist</h2>
           <p className={styles.description}>
-            I craft elegant solutions to complex problems and build amazing digital experiences.
+            I work to understand biological sequences, describe new and rare organisms, and develop tools to further biological research.
           </p>
           <div className={styles.cta}>
-            <a href="#projects" className={styles.primaryButton}>View My Work</a>
-            <a href="#contact" className={styles.secondaryButton}>Get in Touch</a>
+            <a href="about" className={styles.primaryButton}>About Me</a>
+            <a href="contact" className={styles.secondaryButton}>Contact</a>
           </div>
           <div className={styles.socialLinks}>
             <a href="https://github.com/jwestrob" className={styles.socialLink} aria-label="GitHub">

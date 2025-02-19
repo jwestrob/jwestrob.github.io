@@ -2,12 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import p5 from 'p5';
 import './background.css';
 
-const PhyloBackground = () => {
-  const containerRef = useRef(null);
+export default function PhyloBackground() {
+  const sketchRef = useRef(null);
 
   useEffect(() => {
-    // Create and mount the p5 sketch into the containerRef div
-    const sketch = new p5((p) => {
+    let p5Instance;
+
+    const sketch = (p) => {
       let MIN_WEDGE;     // Minimum wedge in radians
       let rawNewick;     // Array of lines from phylo.txt
       let treeRoot;      // Parsed tree structure
@@ -15,14 +16,13 @@ const PhyloBackground = () => {
 
       /* ================== p5 PRELOAD ================== */
       p.preload = () => {
-        // Load the Newick file. (Relative path from your component to 'src/assets/phylo.txt')
-        // Adjust if your build system requires a different path (e.g., "/assets/phylo.txt").
         rawNewick = p.loadStrings('src/assets/phylo.txt');
       };
 
       /* ================== p5 SETUP ================== */
       p.setup = () => {
-        p.createCanvas(800, 800, p.WEBGL);
+        const container = sketchRef.current.parentElement;
+        p.createCanvas(container.clientWidth, container.clientHeight, p.WEBGL);
 
         // 3° in radians
         MIN_WEDGE = 3 * p.PI / 180;
@@ -43,15 +43,15 @@ const PhyloBackground = () => {
         p.background(0);
 
         // Slow rotation around Y and X
-        p.rotateY(p.frameCount * 0.01);
-        p.rotateX(p.frameCount * 0.005);
+        p.rotateY(p.frameCount * 0.003);
+        p.rotateX(p.frameCount * 0.001);
 
         p.stroke('gold');
         p.strokeWeight(1);
         p.noFill();
 
         // Spherical radius for drawing
-        const R = 200;
+        const R = 300;
         drawTreeOnSphere(treeRoot, R);
       };
 
@@ -79,7 +79,7 @@ const PhyloBackground = () => {
         return { x, y, z };
       }
 
-      /* ========== Assign angles to each node’s subtree ========== */
+      /* ========== Assign angles to each node's subtree ========== */
       function assignAngles(node, startAngle, endAngle, depth) {
         node._theta = p.map(depth, 0, maxDepth, 0, p.PI);
         node._phi   = 0.5 * (startAngle + endAngle);
@@ -89,7 +89,7 @@ const PhyloBackground = () => {
         let totalTips = node._leafCount || 1;
         let availableAngle = endAngle - startAngle;
 
-        // Each child’s wedge is proportionate to its fraction of leaf tips, min enforced
+        // Each child's wedge is proportionate to its fraction of leaf tips, min enforced
         let wedges = [];
         let sumWedges = 0;
         for (let child of node.children) {
@@ -184,17 +184,35 @@ const PhyloBackground = () => {
         }
         return tree;
       }
-    }, containerRef.current);
+    };
 
-    // Cleanup: remove the p5 sketch on unmount
+    // Create the p5 instance
+    p5Instance = new p5(sketch, sketchRef.current);
+
+    // Cleanup on unmount
     return () => {
-      sketch.remove();
+      if (p5Instance) {
+        p5Instance.remove();
+      }
+    };
+  }, []);
+
+  const handleResize = () => {
+    if (!p5Instance) return;
+    const container = sketchRef.current.parentElement;
+    p5Instance.resizeCanvas(container.clientWidth, container.clientHeight);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   return (
-    <div className="background-container" ref={containerRef} />
+    <div className="background-container">
+      <div ref={sketchRef} />
+    </div>
   );
-};
-
-export default PhyloBackground;
+}
