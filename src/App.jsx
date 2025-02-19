@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Background from './components/Background/Background';
-import { PhyloBackground } from './components/Background';
+import PhyloBackground from './components/Background/PhyloBackground';
 import CV from './components/CV/CV';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';

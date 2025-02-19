@@ -15,6 +15,12 @@ const Background = () => {
   const starStep = 2;
   const ringCount = 10;
 
+  // Utility for clamped range mapping (like "fog fade")
+  function mapRange(value, inMin, inMax, outMin, outMax) {
+    const t = Math.max(0, Math.min(1, (value - inMin) / (inMax - inMin)));
+    return outMin + t * (outMax - outMin);
+  }
+
   useEffect(() => {
     const orbs = [];
     const orbInfos = [];
@@ -81,12 +87,15 @@ const Background = () => {
     function addOrbs() {
       const orbGeo = new THREE.SphereGeometry(1, 8, 8);
       for (let i = 0; i < orbs.length; i++) {
+        // Ensure we enable transparency on materials
         const mesh = new THREE.Mesh(
           orbGeo,
           new THREE.MeshStandardMaterial({
             color: 0xffdd33, // gold
             metalness: 0.8,
             roughness: 0.2,
+            transparent: true,
+            opacity: 1.0,
           })
         );
         mesh.position.copy(orbs[i]);
@@ -96,6 +105,7 @@ const Background = () => {
       }
     }
 
+    // Add the 4th closest neighbor, plus dynamic line materials (transparent)
     function connectNearestNeighbors() {
       sceneRef.current.add(edges);
 
@@ -113,54 +123,51 @@ const Background = () => {
         }
         distances.sort((a, b) => a.dist - b.dist);
 
-        const minDist = distances[0].dist;
-        let secondDist = Infinity,
-          thirdDist = Infinity;
+        // Group indices by their distances
+        const distanceGroups = [];
+        let currentGroup = [distances[0]];
+        let currentDist = distances[0].dist;
 
         for (let d = 1; d < distances.length; d++) {
-          if (distances[d].dist > minDist) {
-            secondDist = distances[d].dist;
-            break;
+          if (Math.abs(distances[d].dist - currentDist) < 1e-12) {
+            currentGroup.push(distances[d]);
+          } else {
+            distanceGroups.push(currentGroup);
+            currentGroup = [distances[d]];
+            currentDist = distances[d].dist;
           }
         }
-        for (let d = 1; d < distances.length; d++) {
-          if (distances[d].dist > secondDist) {
-            thirdDist = distances[d].dist;
-            break;
-          }
+        if (currentGroup.length > 0) {
+          distanceGroups.push(currentGroup);
         }
 
-        const minDistIndices = distances
-          .filter((d) => Math.abs(d.dist - minDist) < 1e-12)
-          .map((d) => d.index);
-        const secondDistIndices =
-          secondDist < Infinity
-            ? distances
-                .filter((d) => Math.abs(d.dist - secondDist) < 1e-12)
-                .map((d) => d.index)
-            : [];
-        const thirdDistIndices =
-          thirdDist < Infinity
-            ? distances
-                .filter((d) => Math.abs(d.dist - thirdDist) < 1e-12)
-                .map((d) => d.index)
-            : [];
-
-        function connect(i, j) {
-          const key = i < j ? `${i}-${j}` : `${j}-${i}`;
-          if (!connections.has(key)) {
-            connections.add(key);
-            const start = getSurfacePoint(orbInfos[i].position, orbInfos[j].position, orbSize);
-            const end = getSurfacePoint(orbInfos[j].position, orbInfos[i].position, orbSize);
-            const lineGeo = new THREE.BufferGeometry().setFromPoints([start, end]);
-            const lineMat = new THREE.LineBasicMaterial({ color: 0xffd700 });
-            edges.add(new THREE.Line(lineGeo, lineMat));
-          }
+        // Connect to nodes in the first 6 distance groups
+        for (let g = 0; g < Math.min(5, distanceGroups.length); g++) {
+          const group = distanceGroups[g];
+          group.forEach(({ index }) => {
+            const key = i < index ? `${i}-${index}` : `${index}-${i}`;
+            if (!connections.has(key)) {
+              connections.add(key);
+              const start = getSurfacePoint(
+                orbInfos[i].position,
+                orbInfos[index].position,
+                orbSize
+              );
+              const end = getSurfacePoint(
+                orbInfos[index].position,
+                orbInfos[i].position,
+                orbSize
+              );
+              const lineGeo = new THREE.BufferGeometry().setFromPoints([start, end]);
+              const lineMat = new THREE.LineBasicMaterial({
+                color: 0xffd700,
+                transparent: true,
+                opacity: 1.0,
+              });
+              edges.add(new THREE.Line(lineGeo, lineMat));
+            }
+          });
         }
-
-        minDistIndices.forEach((idx) => connect(i, idx));
-        secondDistIndices.forEach((idx) => connect(i, idx));
-        thirdDistIndices.forEach((idx) => connect(i, idx));
       }
     }
 
@@ -191,20 +198,63 @@ const Background = () => {
       sceneRef.current.add(pointLight);
     }
 
+    // Dynamically adjust opacity of orbs & lines based on distance to camera
+    function applyFog() {
+      if (!cameraRef.current) return;
+      const camPos = new THREE.Vector3();
+      cameraRef.current.getWorldPosition(camPos);
+
+      // Fog orbs
+      for (let orb of orbInfos) {
+        const orbWorldPos = new THREE.Vector3();
+        orb.mesh.getWorldPosition(orbWorldPos);
+        const dist = orbWorldPos.distanceTo(camPos);
+        // Example: fade from fully opaque at distance ~5 to fully invisible at ~25
+        const alphaVal = mapRange(dist, 5, 25, 1, 0);
+        orb.mesh.material.opacity = alphaVal;
+        orb.mesh.material.transparent = true;
+      }
+
+      // Fog lines (in edges group)
+      edges.children.forEach((line) => {
+        if (line.geometry && !line.geometry.boundingSphere) {
+          line.geometry.computeBoundingSphere();
+        }
+        if (!line.geometry.boundingSphere) return;
+
+        // The bounding sphere center in local coords
+        const center = line.geometry.boundingSphere.center.clone();
+        // Convert to world coords
+        line.localToWorld(center);
+
+        const dist = center.distanceTo(camPos);
+        const alphaVal = mapRange(dist, 5, 25, 1, 0);
+        line.material.opacity = alphaVal;
+        line.material.transparent = true;
+      });
+    }
+
     function animate() {
       frameIdRef.current = requestAnimationFrame(animate);
       if (sceneRef.current && rendererRef.current && cameraRef.current) {
-        sceneRef.current.rotation.y += 0.001; // slow rotation
+        // Slow rotation
+        sceneRef.current.rotation.y += 0.001;
+
+        // Update fog each frame
+        applyFog();
+
+        // Render
         rendererRef.current.render(sceneRef.current, cameraRef.current);
       }
     }
 
     function handleResize() {
       if (!rendererRef.current || !cameraRef.current || !canvasRef.current) return;
-      
-      canvasRef.current.style.width = `${window.innerWidth}px`;
-      canvasRef.current.style.height = `${window.innerHeight}px`;
-      
+
+      const container = canvasRef.current.parentElement;
+      canvasRef.current.style.width = `${container.clientWidth}px`;
+      canvasRef.current.style.height = `${container.clientHeight}px`;
+
       rendererRef.current.setSize(
         canvasRef.current.clientWidth,
         canvasRef.current.clientHeight
@@ -215,9 +265,10 @@ const Background = () => {
     }
 
     // Initialize
-    canvasRef.current.style.width = `${window.innerWidth}px`;
-    canvasRef.current.style.height = `${window.innerHeight}px`;
-    
+    const container = canvasRef.current.parentElement;
+    canvasRef.current.style.width = `${container.clientWidth}px`;
+    canvasRef.current.style.height = `${container.clientHeight}px`;
+
     initScene();
     buildStarSphere();
     addOrbs();
