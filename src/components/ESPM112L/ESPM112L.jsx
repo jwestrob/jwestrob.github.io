@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ESPM112L.module.css';
 
 const ESPM112L = () => {
@@ -14,19 +15,19 @@ const ESPM112L = () => {
         </p>
 
         <div className={styles.linksContainer}>
-          <a href="/espm112l-2021" className={styles.yearLink}>
+          <Link to="/espm112l-2021" className={styles.yearLink}>
             <div className={styles.yearCard}>
               <h3>2021 Walkthroughs</h3>
               <p>Access teaching materials and walkthroughs from the 2021 session</p>
             </div>
-          </a>
+          </Link>
 
-          <a href="/espm112l-2023" className={styles.yearLink}>
+          <Link to="/espm112l-2023" className={styles.yearLink}>
             <div className={styles.yearCard}>
               <h3>2023 Walkthroughs</h3>
               <p>Access teaching materials and walkthroughs from the 2023 session</p>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

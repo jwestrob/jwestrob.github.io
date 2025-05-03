@@ -87,13 +87,37 @@
   margin-bottom: 3rem;
 }
 
-.primaryButton,
-.secondaryButton {
+.button-base {
   padding: 0.8rem 1.5rem;
   border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
+}
+
+.button-base:hover {
+  transform: translateY(-2px);
+}
+
+.primaryButton {
+  composes: button-base;
+  background-color: #FFD700;
+  color: #000000;
+}
+
+.primaryButton:hover {
+  background-color: #FFC800;
+}
+
+.secondaryButton {
+  composes: button-base;
+  border: 2px solid #FFD700;
+  color: #FFD700;
+}
+
+.secondaryButton:hover {
+  background-color: #FFD700;
+  color: #000000;
 }
 
 .socialLinks {
@@ -112,29 +136,6 @@
 
 .socialLink:hover {
   color: #ffffff;
-  transform: translateY(-2px);
-}
-
-
-
-.primaryButton {
-  background-color: #FFD700;
-  color: #000000;
-}
-
-.primaryButton:hover {
-  background-color: #FFC800;
-  transform: translateY(-2px);
-}
-
-.secondaryButton {
-  border: 2px solid #FFD700;
-  color: #FFD700;
-}
-
-.secondaryButton:hover {
-  background-color: #FFD700;
-  color: #000000;
   transform: translateY(-2px);
 }
 
@@ -162,7 +163,7 @@
 
 @media (max-width: 768px) {
   .home {
-    padding: 4rem 1rem;
+    padding: 6rem 1rem 4rem;
   }
 
   .title {

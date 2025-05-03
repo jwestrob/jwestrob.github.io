@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getPostsByProject } from '../../utils/postUtils';
 import styles from './ESPM112L2021.module.css';
 
@@ -18,9 +19,9 @@ const ESPM112L2021 = () => {
               <h3 className={styles.postTitle}>{post.title}</h3>
               <p className={styles.postDate}>{new Date(post.date).toLocaleDateString()}</p>
               <p className={styles.postExcerpt}>{post.excerpt}</p>
-              <a href={`/posts/${post.slug}`} className={styles.readMore}>
+              <Link to={`/posts/${post.slug}`} className={styles.readMore}>
                 Read More
-              </a>
+              </Link>
             </div>
           ))}
         </div>
