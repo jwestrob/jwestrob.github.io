@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Projects.module.css';
+import ThreeDragonBackground from '../Background/ThreeDragonBackground'; // Updated import
 
 const Projects = () => {
   const projects = [
@@ -24,7 +25,9 @@ const Projects = () => {
   ];
 
   return (
-    <div className={styles.container}>
+    <>
+      <ThreeDragonBackground /> {/* Updated component */}
+      <div className={styles.container}>
       <div className={styles.content}>
         <h2 className={styles.title}>Projects</h2>
         <p className={styles.description}>
@@ -49,6 +52,7 @@ const Projects = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
