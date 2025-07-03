@@ -4,22 +4,22 @@ import styles from './Projects.module.css';
 const Projects = () => {
   const projects = [
     {
-      title: 'Environmental Data Analysis Tool',
-      description: 'A Python-based tool for analyzing environmental datasets, featuring statistical analysis and visualization capabilities.',
-      technologies: ['Python', 'Pandas', 'Matplotlib', 'Scikit-learn'],
-      link: '#'
+      title: 'Astra- High Performance HMM Annotation Suite',
+      description: 'A Python-based tool for analyzing protein sequences with HMMs and organizing multiple databases.',
+      technologies: ['Python', 'Pandas', 'PyHMMer'],
+      link: 'https://github.com/jwestrob/astra'
     },
     {
-      title: 'Biodiversity Mapping Platform',
-      description: 'Interactive web platform for visualizing and analyzing biodiversity data across different ecosystems.',
-      technologies: ['React', 'D3.js', 'Node.js', 'MongoDB'],
-      link: '#'
+      title: 'Genomic Analysis AI Agent',
+      description: 'Agentic RAG system that automates genome annotation and provides intelligent, expert-level analysis of provided genomes and proteins. (Under construction but definitely works!)',
+      technologies: ['Python', 'DSPy', 'Neo4j', 'SQLite', 'LiteLLM'],
+      link: 'https://github.com/jwestrob/microbial_claude_matter'
     },
     {
-      title: 'Climate Change Impact Model',
-      description: 'Predictive modeling system for assessing climate change impacts on local ecosystems.',
-      technologies: ['R', 'TensorFlow', 'GIS', 'AWS'],
-      link: '#'
+      title: 'GAIA - Genome Context-Aware Protein Annotation',
+      description: 'Web-based system for protein language model embedding-based search and annotation of protein sequences. Co-first authored publication published at Science Advances.',
+      technologies: ['Python', 'BLAST', 'HuggingFace', 'Qdrant/HNSW', 'ESMFold'],
+      link: 'https://www.science.org/doi/10.1126/sciadv.adv5109'
     }
   ];
 
