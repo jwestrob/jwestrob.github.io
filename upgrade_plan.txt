@@ -1,0 +1,266 @@
+## Project Plan: Persistent & Transitioning Three.js Background
+
+**Goal:** Implement a single, persistent Three.js background visualization that transitions between different "states" (derived from your existing visualizations) using an "explode and reconstitute" particle animation upon page/route changes.
+
+**Core Tenets:**
+
+* [ ] **Single Rendering Engine:** Standardize all background visualizations to Three.js.
+* [ ] **Persistent Canvas:** One Three.js canvas that lives throughout the user session.
+* [ ] **Modular Visualization States:** Existing visualization logic will be refactored to provide data/configuration to the persistent renderer.
+* [ ] **Particle-Based Transitions:** Transitions will involve deconstructing the current view into particles, which then reform into the next view.
+
+---
+
+### Phase 1: Foundation & Standardization (The "Big Refactor")
+
+This phase focuses on converting all p5.js visualizations to Three.js and establishing the basic structure for the persistent background manager.
+
+**Step 1.1: Environment Setup & Three.js Core**
+
+* **Task:**
+    * [x] Ensure Three.js is correctly installed and integrated into your Vite + React project. (Verified in package.json)
+* **Details:**
+    * [x] Verify `three` is in your `package.json`.
+    * [ ] Familiarize the team (or yourself) with core Three.js concepts: Scene, Camera, Renderer, Geometries, Materials, Points/Particles, Animation Loop.
+* **Outcome:**
+    * [x] A stable Three.js environment. (Initial setup and verification complete)
+
+**Step 1.2: Identify & Analyze p5.js Visualizations for Conversion**
+
+* **Task:**
+    * [x] List all current p5.js background components and analyze their core logic. (Analyzed dragonBackground.jsx)
+* **p5.js components to convert (based on provided file list):**
+    * [ ] `PhyloBackground.jsx` (Phylogenetic tree using `phylo.txt`)
+    * [ ] `PhyloExpansionBackground.jsx` (Force-directed tree)
+    * [x] `dragonBackground.jsx` (Dragon curve on a sphere) - Analyzed
+    * [x] Review if any other p5.js logic is implicitly used for backgrounds (e.g., from `phyloSphere.p5.js` or `dragonsphere.p5.js` if these are actively rendered as backgrounds). - (Found none in src)
+* **Analysis points for each:** (Completed for dragonBackground.jsx)
+    * [x] What data does it visualize? (e.g., tree structure, L-system points) - (dragonBackground.jsx)
+    * [x] How are points/lines/shapes generated? - (dragonBackground.jsx)
+    * [x] What are the key visual elements and their attributes (position, color, size)? - (dragonBackground.jsx)
+    * [x] Is there any interactivity (mouse, etc.)? - (dragonBackground.jsx - none direct)
+* **Outcome:**
+    * [x] A clear understanding of the logic to be ported to Three.js for each p5.js visualization. (Achieved for dragonBackground.jsx)
+
+**Step 1.3: Convert p5.js Visualizations to Three.js (Iterative)**
+
+* **Task:**
+    * [x] For each p5.js visualization, create a new Three.js-based React component that replicates its visual output. At this stage, these can still be self-contained Three.js scenes to facilitate direct comparison and focused development. (Done for dragonBackground.jsx -> ThreeDragonBackground.jsx)
+* **Sub-steps for each conversion:** (Completed for dragonBackground.jsx)
+    1.  [x] **Data Processing:** Replicate the data loading and processing logic (e.g., parsing `phylo.txt`, generating L-system rules). (dragonBackground.jsx)
+    2.  [x] **Geometry Generation:** Translate p5.js drawing logic (e.g., `vertex()`, `line()`, `ellipse()`) into Three.js geometry (`BufferGeometry`, `LineSegments`, `Points`). (dragonBackground.jsx)
+    3.  [x] **Material Application:** Choose appropriate Three.js materials (`LineBasicMaterial`, `PointsMaterial`, `ShaderMaterial` for more complex effects). (dragonBackground.jsx)
+    4.  [x] **Interaction (if any):** Replicate mouse or other interactions using Three.js raycasting or event listeners. (dragonBackground.jsx - N/A)
+* **Example: `dragonBackground.jsx`** (This example is now complete)
+    * [x] p5.js: Generates points for dragon curve, draws them likely using `vertex()` or `point()`.
+    * [x] Three.js: Generate the same 3D point coordinates. Create a `THREE.BufferAttribute` for positions. Use `THREE.Points` with `THREE.PointsMaterial`. (Used LineSegments)
+* **Testing:**
+    * [ ] Ensure each new Three.js component visually matches its p5.js counterpart as closely as possible. (User to test)
+* **Outcome:**
+    * [x] A set of new Three.js components (e.g., `ThreeDragonBackground.jsx`, `ThreePhyloBackground.jsx`) that are visually equivalent to the old p5.js ones. (ThreeDragonBackground.jsx created and integrated)
+
+---
+
+### Phase 2: Implementing the Persistent Background System
+
+This phase builds the core infrastructure for the single, transitioning background.
+
+**Step 2.1: Design the `<PersistentBackground />` Component API**
+
+* **Task:**
+    * [ ] Define the structure and props/context API for the main background manager component.
+* **Key considerations:**
+    * [ ] How will it receive data from individual visualization modules? (Props, React Context)
+    * [ ] How will it manage the global Three.js scene, camera, renderer?
+    * [ ] How will it handle the particle system (e.g., max particle count, shared textures)?
+    * [ ] How will it interface with `react-router` for route changes?
+* **Initial API Ideas:**
+    * [ ] A React Context (e.g., `PersistentBackgroundContext`) might provide functions like:
+        * [ ] `setActiveVisualization(config)`: Where `config` includes particle target data, interaction settings, material properties, etc.
+        * [ ] `triggerTransition(transitionType)`: e.g., 'explode', 'reform'.
+* **Outcome:**
+    * [ ] A clear specification for how `<PersistentBackground />` will work and be controlled.
+
+**Step 2.2: Implement the Basic `<PersistentBackground />` Component**
+
+* **Task:**
+    * [ ] Create the `<PersistentBackground />` React component.
+* **Details:**
+    1.  [ ] **Initialization:**
+        * [ ] Set up `THREE.WebGLRenderer`, `THREE.Scene`, `THREE.PerspectiveCamera`.
+        * [ ] Append the renderer's `domElement` to a ref that is styled to be a fixed background (e.g., `position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%;`).
+        * [ ] Start a global animation loop (`requestAnimationFrame`).
+    2.  [ ] **Placement:** Integrate this component into `App.jsx` so it's outside the `<Routes>` and persists across navigation.
+    3.  [ ] **Window Resize Handling:** Implement global resize logic for the camera and renderer.
+* **Outcome:**
+    * [ ] A blank Three.js canvas rendering as the site background, managed by a persistent React component.
+
+**Step 2.3: Develop the Core Particle System**
+
+* **Task:**
+    * [ ] Implement a flexible particle system within `<PersistentBackground />`.
+* **Details:**
+    1.  [ ] **Particle Pool:** Create a `THREE.Points` object with a `THREE.BufferGeometry`. Initialize with a maximum number of particles (e.g., 10,000-50,000, depending on performance targets and the most complex visualization).
+        * [ ] Attributes needed: `position` (vec3), `color` (vec3), `targetPosition` (vec3), `targetColor` (vec3), `currentAlpha` (float), `targetAlpha` (float), `currentSize` (float), `targetSize` (float), `animationProgress` (float - can be a uniform or an attribute).
+    2.  [ ] **Material:** Use `THREE.PointsMaterial` with `vertexColors=true`, `transparent=true`, and `sizeAttenuation=true`. Consider `THREE.ShaderMaterial` for more advanced control over particle appearance (e.g., custom sprites, fading) and animation during transitions (e.g., using GLSL for per-particle animation logic).
+    3.  [ ] **Texture:** Load the `star.png` texture (or any other shared particle textures) once in `<PersistentBackground />` and apply it to the `PointsMaterial`.
+    4.  [ ] **Animation Logic:** In the global animation loop, update particle attributes by interpolating from current to target states based on `animationProgress` or elapsed time.
+        * [ ] Example: `particle.position.lerp(particle.targetPosition, deltaTime * animationSpeed)`.
+        * [ ] Libraries like Tween.js or GSAP can be integrated for more complex tweening behaviors.
+* **Outcome:**
+    * [ ] A manageable pool of Three.js particles that can have their target states (position, color, size, alpha) updated and animated.
+
+**Step 2.4: Integrate with React Router**
+
+* **Task:**
+    * [ ] Make `<PersistentBackground />` aware of route changes.
+* **Details:**
+    1.  [ ] Use the `useLocation` hook from `react-router-dom` inside `<PersistentBackground />`.
+    2.  [ ] When `location.pathname` changes, this will be the trigger to initiate a background transition sequence.
+* **Outcome:**
+    * [ ] `<PersistentBackground />` can react to navigation events.
+
+---
+
+### Phase 3: Adapting Visualizations & Implementing Transitions
+
+This phase connects the individual (now Three.js) visualizations to the persistent system and builds the "explode/reconstitute" effects.
+
+**Step 3.1: Refactor Existing Three.js Visualizations as "Data Providers"**
+
+* **Task:**
+    * [ ] Modify the Three.js background components (both original ones like `Background.jsx` and the newly converted ones from Step 1.3) to work with `<PersistentBackground />`.
+* **Sub-steps for each visualization component:**
+    1.  [ ] **Remove Self-Rendering:** Delete its own scene, camera, renderer, and animation loop.
+    2.  [ ] **Data Generation:** Keep the logic that calculates particle positions, colors, sizes (e.g., the star sphere coordinates in `Background.jsx`). This data should be memoized (e.g., with `useMemo`) to avoid re-computation on every render.
+    3.  [ ] **Interface with Context/Props:** When the component is "active" (i.e., its corresponding page is viewed, perhaps determined by a prop passed from the page component or by matching the current route), it calls `setActiveVisualization(config)` from the `PersistentBackgroundContext` (or passes props), providing:
+        * [ ] `id`: A unique identifier for the visualization type (e.g., 'STAR_SPHERE', 'DRAGON_CURVE').
+        * [ ] `particleTargetPositions`: A `Float32Array` of (x,y,z) coordinates for the particles.
+        * [ ] `particleTargetColors` (optional): A `Float32Array` of (r,g,b) values.
+        * [ ] `particleTargetSizes` (optional): A `Float32Array` of sizes.
+        * [ ] `particleTargetAlphas` (optional): A `Float32Array` of alpha values.
+        * [ ] `mouseInteractionConfig` (optional): Parameters for how mouse movement should affect the view (e.g., rotation speed, type of interaction like camera orbit or group rotation).
+        * [ ] `cameraConfig` (optional): Desired camera position, lookAt target for this specific visualization.
+    4.  [ ] **Render Null:** These components will likely return `null` as their rendering is handled globally. They primarily act as declarative configuration providers based on the current route.
+* **Example: `Background.jsx` (Star Sphere)**
+    * [ ] Keeps logic for generating spherical star coordinates.
+    * [ ] On mount/route activation, calls `setActiveVisualization({ id: 'STAR_SPHERE', positions: starCoordsArray, interaction: { type: 'ROTATE_GROUP', speed: 0.0001 }, cameraConfig: { position: [0,0,700], lookAt: [0,0,0] } })`.
+* **Outcome:**
+    * [ ] All background components are now lightweight configurators for the `<PersistentBackground />` system, providing data based on the active route.
+
+**Step 3.2: Implement the "Explode" Animation**
+
+* **Task:**
+    * [ ] Create the "explode" transition logic in `<PersistentBackground />`.
+* **Details:**
+    1.  [ ] **Trigger:** When a route change is detected *away* from a page (i.e., `prevLocation !== currentLocation`).
+    2.  [ ] **Logic:** For each active particle in the system (or a subset if the previous visualization used fewer particles):
+        * [ ] Calculate a new "exploded" `targetPosition`. This could be:
+            * [ ] Radially outwards from a central point.
+            * [ ] Random positions within a larger bounding volume.
+            * [ ] Based on a physics-like impulse.
+        * [ ] Optionally change `targetColor` (e.g., fade to a neutral color or a transition color), `targetSize` (e.g., shrink or expand), and `targetAlpha` (e.g., fade out slightly).
+        * [ ] Start the particle animation towards these new exploded targets.
+    3.  [ ] **State Management:** `<PersistentBackground />` needs an internal state (e.g., `'IDLE'`, `'EXPLODING'`, `'REFORMING'`). Set to `'EXPLODING'`.
+* **Outcome:**
+    * [ ] Visualizations dissolve into a dynamic cloud of particles on page navigation.
+
+**Step 3.3: Implement the "Reconstitute" (Reform) Animation**
+
+* **Task:**
+    * [ ] Create the "reconstitute" transition logic in `<PersistentBackground />`.
+* **Details:**
+    1.  [ ] **Trigger:** After the "explode" animation has reached a certain point (or after a set duration) and when the new page's visualization module has provided its target data via `setActiveVisualization`.
+    2.  [ ] **Logic:**
+        * [ ] The new active visualization module (e.g., `ThreeDragonBackground`) calls `setActiveVisualization` with its specific particle target positions, colors, etc.
+        * [ ] `<PersistentBackground />` updates the `targetPosition`, `targetColor`, `targetSize`, `targetAlpha` for each particle based on this new data. If the new visualization uses fewer particles than available, "excess" particles can have their `targetAlpha` set to 0. If it needs more, "dormant" particles can be activated.
+        * [ ] Particles animate from their current "exploded" state to their new defined formation.
+        * [ ] Update camera position/lookAt based on `cameraConfig` from the new visualization, possibly animating this camera transition as well.
+    3.  [ ] **State Management:** Set to `'REFORMING'`, then back to `'IDLE'` once complete.
+* **Outcome:**
+    * [ ] Particles coalesce from the exploded state into the new page's visualization.
+
+**Step 3.4: Orchestrate Transitions with Page Content**
+
+* **Task:**
+    * [ ] Ensure smooth visual flow between background transitions and page content changes.
+* **Details:**
+    * [ ] This requires careful timing. The `<PersistentBackground />` could expose its transition state (`'EXPLODING'`, `'REFORMING'`) via Context.
+    * [ ] Page components can use this context to delay their own rendering or apply fade-in/out animations.
+    * [ ] **Sequence Idea:**
+        1.  [ ] Route change detected.
+        2.  [ ] Current page content starts to fade out / exit animation.
+        3.  [ ] `<PersistentBackground />` starts "explode" animation.
+        4.  [ ] Once page content is hidden and/or explosion reaches a certain phase, the actual React component for the new page is rendered (but perhaps initially invisible).
+        5.  [ ] New page's visualization module provides data to `<PersistentBackground />`.
+        6.  [ ] `<PersistentBackground />` starts "reform" animation.
+        7.  [ ] New page content fades in / enter animation, timed with the reform.
+    * [ ] Libraries like `Framer Motion` or `React Transition Group` for page transitions can be coordinated with the background's state.
+* **Outcome:**
+    * [ ] A visually cohesive experience where background and foreground transitions feel connected and well-timed.
+
+---
+
+### Phase 4: Refinement, Optimization & Accessibility
+
+**Step 4.1: Performance Profiling and Optimization**
+
+* **Task:**
+    * [ ] Thoroughly test performance, especially during transitions and with complex visualizations.
+* **Tools:**
+    * [ ] Browser developer tools (Performance tab), `stats.js`.
+* **Areas to optimize:**
+    * [ ] Number of active particles (ensure it doesn't exceed your defined maximum).
+    * [ ] Complexity of particle shaders (if using `ShaderMaterial`).
+    * [ ] JavaScript calculations in the animation loop (minimize object creation, use efficient algorithms).
+    * [ ] Ensure proper disposal of Three.js objects if any are temporarily created and not part of the main persistent scene.
+    * [ ] Use `BufferGeometry.attributes.needsUpdate = true` judiciously.
+* **Outcome:**
+    * [ ] Smooth animations (aim for consistent 60 FPS) across target devices.
+
+**Step 4.2: Fine-tune Aesthetics and Animation Feel**
+
+* **Task:**
+    * [ ] Adjust animation speeds, easing functions, particle appearances, and explosion/reformation styles.
+* **Details:**
+    * [ ] Iterate on the look and feel until it's polished and impactful without being overly distracting or disorienting.
+    * [ ] Experiment with different "explode" patterns (e.g., spherical expansion, vortex, random drift, shrinking to a point then re-expanding).
+    * [ ] Adjust particle colors, sizes, and opacity during transitions for dynamic effects.
+    * [ ] Consider the duration of each phase of the transition.
+* **Outcome:**
+    * [ ] A visually appealing and polished set of transitions that enhance the user experience.
+
+**Step 4.3: Implement Accessibility Features**
+
+* **Task:**
+    * [ ] Add an option to reduce or disable complex background motion.
+* **Details:**
+    1.  [ ] Provide a UI toggle (e.g., in the header or footer, or a site settings panel).
+    2.  [ ] Respect the `prefers-reduced-motion` CSS media query by default.
+    3.  [ ] When reduced motion is active:
+        * [ ] Replace "explode/reconstitute" with simple cross-fades between static (or very subtly animated) representations of the visualizations.
+        * [ ] Alternatively, the background could become a static image or a very minimal, slow animation.
+        * [ ] The key is to eliminate rapid, large-scale motion.
+* **Outcome:**
+    * [ ] An accessible experience for users sensitive to motion.
+
+**Step 4.4: Cross-Browser and Cross-Device Testing**
+
+* **Task:**
+    * [ ] Test thoroughly on major browsers (Chrome, Firefox, Safari, Edge) and different devices (desktop, tablet, mobile).
+* **Details:**
+    * [ ] Pay attention to WebGL compatibility, performance on less powerful GPUs, and touch interactions if mouse interactions are adapted for touch.
+* **Outcome:**
+    * [ ] Consistent and performant experience across platforms.
+
+---
+
+**Key Files Involved (Anticipated Changes/Additions):**
+
+* [ ] `src/App.jsx`: Will host `<PersistentBackground />` and manage overall layout.
+* [ ] `src/components/Background/`: This directory will see major changes.
+    * [ ] `Background.jsx`, `PhyloBackground.jsx`, `PhyloExpansionBackground.jsx`, `dragonBackground.jsx`, `OrbitalSimBackground.jsx`: Will be refactored into "data providers."
+    * [ ] New file: `src/components/Background/PersistentBackground.jsx` (or similar name and location).
+    * [ ] Possibly a new context file: `src/contexts/PersistentBackgroundContext.jsx`.
+* [ ] Individual page components (Home, About, Projects, etc.): May need to subscribe to the `PersistentBackgroundContext` to coordinate their own content animations with the background's transition state.
+* [ ] Styling files (`background.css`, etc.): Ensure the persistent canvas is styled correctly.
