@@ -1,0 +1,36 @@
+name: Refresh Google Scholar snapshot
+
+on:
+  schedule:
+    - cron: "23 13 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scholar-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch and validate public profile
+        run: |
+          python3 scripts/update_scholar.py
+          python3 -m json.tool data/scholar.json >/dev/null
+
+      - name: Commit a changed snapshot
+        run: |
+          if git diff --quiet -- data/scholar.json; then
+            echo "Scholar snapshot is unchanged"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/scholar.json
+          git commit -m "data: refresh Google Scholar snapshot"
+          git push

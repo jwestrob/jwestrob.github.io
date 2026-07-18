@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090805">
+  <title>Projects · Jacob West-Roberts</title>
+  <meta name="description" content="Selected computational biology projects by Jacob West-Roberts.">
+  <link rel="canonical" href="https://jwestrob.github.io/projects/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-open="false">
+    <div class="header-inner">
+      <a class="brand" href="/">Jacob West-Roberts</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/projects/" aria-current="page">Projects</a>
+        <a href="/publications/">Papers</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page" id="main">
+    <h1>Projects</h1>
+    <p class="page-lede">
+      Here's what I've been working on lately.
+    </p>
+
+    <div class="project-list">
+      <article class="project" id="sharur">
+        <div>
+          <p class="project-meta">Metagenomic research system</p>
+          <h2>Sharur</h2>
+        </div>
+        <div class="project-body">
+          <p>
+            I built Sharur to explore large metagenomic datasets with AI agents.
+            It brings genomic neighborhoods, sequence and structure search, and
+            protein language model embeddings into one queryable system. Those
+            embeddings also feed ELSA’s search for conserved syntenic blocks.
+          </p>
+          <p>
+            Sharur combines system calls from TXSScan and DefenseFinder, HydDB
+            and KOFAM annotations, MinCED CRISPR arrays, and biosynthetic gene
+            cluster results from antiSMASH and GECCO.
+          </p>
+          <p>
+            Evidence and replay instructions stay attached to each finding.
+            Independent AI agents can systematically rerun analyses, test
+            falsification criteria, and vet claims before they move forward.
+          </p>
+          <p>Sharur is currently pre-release.</p>
+          <div class="project-links">
+            <a href="/contact/">Contact me about access →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" id="giant-proteins">
+        <div>
+          <p class="project-meta">Omnitrophota</p>
+          <h2>Giant proteins</h2>
+        </div>
+        <div class="project-body">
+          <p>
+            I’m studying unusually large proteins from Omnitrophota. I use
+            comparative genomics and structure prediction to work out how they
+            grew, how their repeated architectures are organized, and what
+            their genomic neighborhoods reveal about their evolution.
+          </p>
+          <p>
+            A large part of the work is separating evolutionary signal from
+            assembly, gene-calling, and structure-prediction artifacts.
+          </p>
+          <div class="project-links">
+            <a href="https://www.biorxiv.org/content/10.1101/2023.11.21.568195v1" target="_blank" rel="noopener">Preprint ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" id="talea">
+        <div>
+          <p class="project-meta">Sequence → geometry</p>
+          <h2>Talea</h2>
+        </div>
+        <div class="project-body">
+          <p>
+            I built Talea to read patterns in a protein language model’s
+            attention and find solenoids: elongated protein structures made
+            from repeating units.
+          </p>
+          <p>
+            Starting from sequence alone, it locates the repeated region,
+            estimates the length of its repeating unit, and measures whether the
+            units form an open path or close into a loop. That makes it possible
+            to search metagenomes for unusual structures, then choose promising
+            proteins to predict and inspect.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/jwestrob/Talea" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" id="elsa">
+        <div>
+          <p class="project-meta">Genome context</p>
+          <h2>ELSA</h2>
+        </div>
+        <div class="project-body">
+          <p>
+            I built ELSA to search for conserved gene neighborhoods using protein
+            language model embeddings as anchors, then join collinear hits into
+            syntenic blocks.
+          </p>
+          <p>
+            In the current public benchmark it recovers 98.9% of strict operons
+            with 97.1% ortholog precision and 99.9% search recall at 50 results.
+          </p>
+          <ul class="project-numbers">
+            <li>98.9% strict operon recall</li>
+            <li>97.1% ortholog precision</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/jwestrob/ELSA" target="_blank" rel="noopener">Code ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project" id="gaia">
+        <div>
+          <p class="project-meta">Protein search</p>
+          <h2>Gaia</h2>
+        </div>
+        <div class="project-body">
+          <p>
+            I co-first-authored Gaia, a platform that uses genomic context to
+            improve protein sequence search and annotation.
+          </p>
+          <ul class="project-numbers">
+            <li>Co-first author</li>
+            <li>Science Advances · 2025</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://doi.org/10.1126/sciadv.adv5109" target="_blank" rel="noopener">Gaia paper ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© <span id="current-year">2026</span> Jacob West-Roberts</span>
+      <div class="footer-links">
+        <a href="https://github.com/jwestrob" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=AqcNAskAAAAJ" target="_blank" rel="noopener">Scholar</a>
+        <a href="https://linkedin.com/in/jwestrob" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/art/">Art</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/js/site.js"></script>
+</body>
+</html>

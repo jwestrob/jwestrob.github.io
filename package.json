@@ -1,0 +1,11 @@
+{
+  "name": "jacob-west-roberts-site",
+  "version": "5.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-sites.mjs",
+    "dev": "python3 scripts/devserve.py 8000",
+    "validate": "node --check js/site.js && python3 -m json.tool data/scholar.json >/dev/null && python3 -m json.tool data/structures/protein-fragment.json >/dev/null && python3 -m py_compile scripts/update_scholar.py scripts/prepare_structure.py scripts/devserve.py"
+  }
+}

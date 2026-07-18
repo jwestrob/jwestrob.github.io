@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090805">
+  <title>Contact · Jacob West-Roberts</title>
+  <meta name="description" content="Contact Jacob West-Roberts by email.">
+  <link rel="canonical" href="https://jwestrob.github.io/contact/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-open="false">
+    <div class="header-inner">
+      <a class="brand" href="/">Jacob West-Roberts</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/projects/">Projects</a>
+        <a href="/publications/">Papers</a>
+        <a href="/contact/" aria-current="page">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page" id="main">
+    <h1>Contact</h1>
+    <div class="contact-layout">
+      <div class="contact-copy">
+        <p>
+          Use the form, or email me directly. The form opens a drafted message
+          in your email app.
+        </p>
+        <a class="contact-email" href="mailto:jacobwestroberts@gmail.com">jacobwestroberts@gmail.com</a>
+        <ul class="profile-links">
+          <li><a href="https://github.com/jwestrob" target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a href="https://scholar.google.com/citations?user=AqcNAskAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a></li>
+          <li><a href="https://linkedin.com/in/jwestrob" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a href="https://orcid.org/0009-0002-3516-2666" target="_blank" rel="noopener">ORCID ↗</a></li>
+        </ul>
+      </div>
+
+      <form class="contact-form" id="contact-form" action="mailto:jacobwestroberts@gmail.com" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="contact-name">Name</label>
+          <input id="contact-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="contact-email">Email</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" required></textarea>
+        </div>
+        <button class="plain-button" type="submit">Draft email</button>
+        <p class="form-note">The draft stays in your email app.</p>
+        <p class="form-status" id="form-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© <span id="current-year">2026</span> Jacob West-Roberts</span>
+      <div class="footer-links">
+        <a href="https://github.com/jwestrob" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=AqcNAskAAAAJ" target="_blank" rel="noopener">Scholar</a>
+        <a href="https://linkedin.com/in/jwestrob" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/art/">Art</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/js/site.js"></script>
+</body>
+</html>

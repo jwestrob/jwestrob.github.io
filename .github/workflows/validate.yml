@@ -1,0 +1,29 @@
+name: Validate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate HTML
+        run: npx -y html-validate "index.html" "about/index.html" "projects/index.html" "publications/index.html" "cv/index.html" "art/index.html" "contact/index.html" "links/index.html" "writing/index.html" --config .htmlvalidate.json
+
+      - name: Check internal links
+        run: |
+          set -e
+          npx -y linkinator . --recurse --skip "jwestrob.github.io|scholar.google.com|fonts.googleapis.com|fonts.gstatic.com|doi.org|openreview.net|biorxiv.org"
+
+      - name: Validate data and scripts
+        run: |
+          python3 -m json.tool data/scholar.json >/dev/null
+          python3 -m json.tool data/structures/protein-fragment.json >/dev/null
+          python3 -m py_compile scripts/update_scholar.py scripts/prepare_structure.py scripts/devserve.py
+          node --check js/site.js
