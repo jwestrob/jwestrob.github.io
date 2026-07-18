@@ -420,13 +420,6 @@ main {
   margin-top: 14px;
 }
 
-.project-body .project-inline-link {
-  color: var(--gold-bright);
-  text-decoration: underline;
-  text-decoration-color: var(--gold-rule);
-  text-underline-offset: 3px;
-}
-
 .project-numbers {
   display: flex;
   flex-wrap: wrap;
