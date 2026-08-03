@@ -4,18 +4,18 @@
     "name": "Google Scholar",
     "profileId": "AqcNAskAAAAJ",
     "profileUrl": "https://scholar.google.com/citations?user=AqcNAskAAAAJ&hl=en&pagesize=100",
-    "fetchedAt": "2026-07-18T08:19:17Z",
+    "fetchedAt": "2026-08-03T15:56:37Z",
     "recordCount": 38,
     "note": "Raw public-profile records. Scholar may list preprints, published versions, and supplements separately."
   },
   "metrics": {
     "citations": {
-      "all": 763,
-      "since2021": 709
+      "all": 770,
+      "since2021": 717
     },
     "hIndex": {
-      "all": 17,
-      "since2021": 17
+      "all": 16,
+      "since2021": 16
     },
     "i10Index": {
       "all": 23,
@@ -39,7 +39,7 @@
       "authors": "C Greening, PR Cabotaje, LEV Alvarado, PM Leung, H Land, ...",
       "venue": "Cell 187 (13), 3357-3372. e19, 2024",
       "year": 2024,
-      "citations": 65,
+      "citations": 66,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:dhFuZR0502QC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18432882161635902826"
     },
@@ -49,7 +49,7 @@
       "authors": "A Cornman, J West-Roberts, AP Camargo, S Roux, M Beracochea, ...",
       "venue": "bioRxiv, 2024.08. 14.607850, 2024",
       "year": 2024,
-      "citations": 61,
+      "citations": 65,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:L8Ckcad2t8MC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9939821903573977288"
     },
@@ -59,7 +59,7 @@
       "authors": "SD Aggarwal, R Eutsey, J West-Roberts, A Domenech, W Xu, IT Abdullah, ...",
       "venue": "PLoS pathogens 14 (10), e1007328, 2018",
       "year": 2018,
-      "citations": 55,
+      "citations": 54,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:2osOgNQ5qMEC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7306526437701181833"
     },
@@ -69,7 +69,7 @@
       "authors": "RA Cuevas, R Eutsey, A Kadam, JA West‐Roberts, CA Woolford, ...",
       "venue": "Molecular microbiology 105 (4), 554-571, 2017",
       "year": 2017,
-      "citations": 55,
+      "citations": 54,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:d1gkVwhDpl0C",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15698887659821955468"
     },
@@ -79,7 +79,7 @@
       "authors": "YC Lou, LX Chen, AL Borges, J West-Roberts, BA Firek, MJ Morowitz, ...",
       "venue": "Cell host & microbe 32 (1), 35-47. e6, 2024",
       "year": 2024,
-      "citations": 52,
+      "citations": 51,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:Wp0gIr-vW9MC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16482587620178272966"
     },
@@ -89,19 +89,9 @@
       "authors": "YC Lou, J Hoff, MR Olm, J West-Roberts, S Diamond, BA Firek, ...",
       "venue": "Microbiome 11 (1), 36, 2023",
       "year": 2023,
-      "citations": 41,
+      "citations": 42,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:0EnyYjriUFMC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2730536152256776729"
-    },
-    {
-      "id": "AqcNAskAAAAJ:UebtZRa9Y70C",
-      "title": "The Chloroflexi supergroup is metabolically diverse and representatives have novel genes for non-photosynthesis based CO2 fixation",
-      "authors": "JA West-Roberts, PB Matheus-Carnevali, MC Schoelmerich, B Al-Shayeb, ...",
-      "venue": "BioRxiv, 2021.08. 23.457424, 2021",
-      "year": 2021,
-      "citations": 37,
-      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:UebtZRa9Y70C",
-      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15433836066379879916"
     },
     {
       "id": "AqcNAskAAAAJ:4DMP91E08xMC",
@@ -109,19 +99,19 @@
       "authors": "LE Valentin-Alvarado, KE Appler, V De Anda, MC Schoelmerich, ...",
       "venue": "Nature Communications 15 (1), 6384, 2024",
       "year": 2024,
-      "citations": 36,
+      "citations": 39,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:4DMP91E08xMC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=809577518363207030"
     },
     {
-      "id": "AqcNAskAAAAJ:5nxA0vEk-isC",
-      "title": "A widespread group of large plasmids in methanotrophic Methanoperedens archaea",
-      "authors": "MC Schoelmerich, HT Ouboter, R Sachdeva, PI Penev, Y Amano, ...",
-      "venue": "Nature Communications 13 (1), 7085, 2022",
-      "year": 2022,
-      "citations": 30,
-      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:5nxA0vEk-isC",
-      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12869012752794279141"
+      "id": "AqcNAskAAAAJ:UebtZRa9Y70C",
+      "title": "The Chloroflexi supergroup is metabolically diverse and representatives have novel genes for non-photosynthesis based CO2 fixation",
+      "authors": "JA West-Roberts, PB Matheus-Carnevali, MC Schoelmerich, B Al-Shayeb, ...",
+      "venue": "BioRxiv, 2021.08. 23.457424, 2021",
+      "year": 2021,
+      "citations": 36,
+      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:UebtZRa9Y70C",
+      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15433836066379879916"
     },
     {
       "id": "AqcNAskAAAAJ:-f6ydRqryjwC",
@@ -129,9 +119,19 @@
       "authors": "N Jha, J Kravitz, J West-Roberts, C Lu, AP Camargo, S Roux, A Cornman, ...",
       "venue": "Science Advances 11 (25), eadv5109, 2025",
       "year": 2025,
-      "citations": 29,
+      "citations": 31,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:-f6ydRqryjwC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13176599919590584982"
+    },
+    {
+      "id": "AqcNAskAAAAJ:5nxA0vEk-isC",
+      "title": "A widespread group of large plasmids in methanotrophic Methanoperedens archaea",
+      "authors": "MC Schoelmerich, HT Ouboter, R Sachdeva, PI Penev, Y Amano, ...",
+      "venue": "Nature Communications 13 (1), 7085, 2022",
+      "year": 2022,
+      "citations": 29,
+      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:5nxA0vEk-isC",
+      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12869012752794279141"
     },
     {
       "id": "AqcNAskAAAAJ:YOwf2qJgpHMC",
@@ -139,25 +139,15 @@
       "authors": "MC Schoelmerich, L Ly, J West-Roberts, LD Shi, C Shen, NS Malvankar, ...",
       "venue": "Nature Communications 15 (1), 5414, 2024",
       "year": 2024,
-      "citations": 24,
+      "citations": 25,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:YOwf2qJgpHMC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=959392285105349841"
-    },
-    {
-      "id": "AqcNAskAAAAJ:Se3iqnhoufwC",
-      "title": "Borgs are giant extrachromosomal elements with the potential to augment methane oxidation",
-      "authors": "B Al-Shayeb, MC Schoelmerich, J West-Roberts, LE Valentin-Alvarado, ...",
-      "venue": "BioRxiv, 2021.07. 10.451761, 2021",
-      "year": 2021,
-      "citations": 24,
-      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:Se3iqnhoufwC",
-      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=524655251738014156"
     },
     {
       "id": "AqcNAskAAAAJ:hqOjcs7Dif8C",
       "title": "Global genomic analysis of microbial biotransformation of arsenic highlights the importance of arsenic methylation in environmental and human microbiomes",
       "authors": "R Keren, R Méheust, JM Santini, A Thomas, J West-Roberts, JF Banfield, ...",
-      "venue": "Computational and Structural Biotechnology Journal 20, 559-572, 2022",
+      "venue": "",
       "year": 2022,
       "citations": 23,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:hqOjcs7Dif8C",
@@ -167,9 +157,9 @@
       "id": "AqcNAskAAAAJ:mVmsd5A6BfQC",
       "title": "Autotrophic biofilms sustained by deeply sourced groundwater host diverse bacteria implicated in sulfur and hydrogen metabolism",
       "authors": "LE Valentin-Alvarado, SC Fakra, AJ Probst, JR Giska, AL Jaffe, ...",
-      "venue": "Microbiome 12 (1), 1-20, 2024",
+      "venue": "Microbiome 12 (1), 15, 2024",
       "year": 2024,
-      "citations": 19,
+      "citations": 20,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:mVmsd5A6BfQC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14437458963464482070"
     },
@@ -179,7 +169,7 @@
       "authors": "LD Parker, MTR Hawkins, M Camacho‐Sanchez, MG Campana, ...",
       "venue": "Molecular Ecology 29 (21), 4074-4090, 2020",
       "year": 2020,
-      "citations": 18,
+      "citations": 20,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:_FxGoFyzp5QC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16431270345916388178"
     },
@@ -199,7 +189,7 @@
       "authors": "MY Voutsinos, JA West-Roberts, R Sachdeva, JW Moreau, JF Banfield",
       "venue": "BMC biology 22 (1), 41, 2024",
       "year": 2024,
-      "citations": 14,
+      "citations": 15,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:9ZlFYXVOiuMC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=17440379649376048840"
     },
@@ -209,19 +199,9 @@
       "authors": "LD Shi, J West-Roberts, MC Schoelmerich, PI Penev, LX Chen, Y Amano, ...",
       "venue": "Nature Microbiology 9 (9), 2422-2433, 2024",
       "year": 2024,
-      "citations": 12,
+      "citations": 14,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:_kc_bZDykSQC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3484479817417683279"
-    },
-    {
-      "id": "AqcNAskAAAAJ:7PzlFSSx8tAC",
-      "title": "Diverse genomic embedding benchmark for functional evaluation across the tree of life",
-      "authors": "J West-Roberts, J Kravitz, N Jha, A Cornman, Y Hwang",
-      "venue": "bioRxiv, 2024.07. 10.602933, 2024",
-      "year": 2024,
-      "citations": 12,
-      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:7PzlFSSx8tAC",
-      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7972057440978765441"
     },
     {
       "id": "AqcNAskAAAAJ:aqlVkmm33-oC",
@@ -229,9 +209,19 @@
       "authors": "J West-Roberts, L Valentin-Alvarado, S Mullen, R Sachdeva, J Smith, ...",
       "venue": "BioRxiv, 2023.11. 21.568195, 2023",
       "year": 2023,
-      "citations": 12,
+      "citations": 14,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:aqlVkmm33-oC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11419988099965847011"
+    },
+    {
+      "id": "AqcNAskAAAAJ:7PzlFSSx8tAC",
+      "title": "Diverse genomic embedding benchmark for functional evaluation across the tree of life",
+      "authors": "J West-Roberts, J Kravitz, N Jha, A Cornman, Y Hwang",
+      "venue": "bioRxiv, 2024.07. 10.602933, 2024",
+      "year": 2024,
+      "citations": 13,
+      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:7PzlFSSx8tAC",
+      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7972057440978765441"
     },
     {
       "id": "AqcNAskAAAAJ:hC7cP41nSMkC",
@@ -239,9 +229,19 @@
       "authors": "A Cornman, J West-Roberts, AP Camargo, S Roux, M Beracochea, ...",
       "venue": "",
       "year": 2024,
-      "citations": 11,
+      "citations": 13,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:hC7cP41nSMkC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12044996718489690834"
+    },
+    {
+      "id": "AqcNAskAAAAJ:Se3iqnhoufwC",
+      "title": "Borgs are giant extrachromosomal elements with the potential to augment methane oxidation",
+      "authors": "B Al-Shayeb, MC Schoelmerich, J West-Roberts, LE Valentin-Alvarado, ...",
+      "venue": "BioRxiv, 2021.07. 10.451761, 2021",
+      "year": 2021,
+      "citations": 13,
+      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:Se3iqnhoufwC",
+      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=524655251738014156"
     },
     {
       "id": "AqcNAskAAAAJ:Zph67rFs4hoC",
@@ -334,6 +334,16 @@
       "citedByUrl": "https://scholar.google.com"
     },
     {
+      "id": "AqcNAskAAAAJ:4JMBOYKVnBMC",
+      "title": "Evidence for lanthanide and PQQ dependent dehydrogenases in Eukarya",
+      "authors": "CM Robinson, NC Martinez-Gomez, JA West-Roberts, MY Voutsinos, ...",
+      "venue": "bioRxiv, 2026.07. 14.738520, 2026",
+      "year": 2026,
+      "citations": 0,
+      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:4JMBOYKVnBMC",
+      "citedByUrl": "https://scholar.google.com"
+    },
+    {
       "id": "AqcNAskAAAAJ:M3ejUd6NZC8C",
       "title": "Tracing microbial strains to detect sample contamination in metagenomics studies",
       "authors": "YC Lou, J Hoff, MR Olm, J West-Roberts, S Diamond, BA Firek, ...",
@@ -381,16 +391,6 @@
       "year": 2020,
       "citations": 0,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:hFOr9nPyWt4C",
-      "citedByUrl": "https://scholar.google.com"
-    },
-    {
-      "id": "AqcNAskAAAAJ:ufrVoPGSRksC",
-      "title": "High gene flow across heterogeneous tropical montane environments in a Bornean endemic small mammal",
-      "authors": "L Parker, M Hawkins, M Camacho-Sanchez, M Campana, J West-Roberts, ...",
-      "venue": "Authorea Preprints, 2020",
-      "year": 2020,
-      "citations": 0,
-      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:ufrVoPGSRksC",
       "citedByUrl": "https://scholar.google.com"
     },
     {
