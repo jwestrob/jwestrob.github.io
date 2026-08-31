@@ -4,14 +4,14 @@
     "name": "Google Scholar",
     "profileId": "AqcNAskAAAAJ",
     "profileUrl": "https://scholar.google.com/citations?user=AqcNAskAAAAJ&hl=en&pagesize=100",
-    "fetchedAt": "2026-08-03T15:56:37Z",
+    "fetchedAt": "2026-08-31T19:31:16Z",
     "recordCount": 38,
     "note": "Raw public-profile records. Scholar may list preprints, published versions, and supplements separately."
   },
   "metrics": {
     "citations": {
-      "all": 770,
-      "since2021": 717
+      "all": 795,
+      "since2021": 742
     },
     "hIndex": {
       "all": 16,
@@ -29,19 +29,9 @@
       "authors": "B Al-Shayeb, MC Schoelmerich, J West-Roberts, LE Valentin-Alvarado, ...",
       "venue": "Nature 610 (7933), 731-736, 2022",
       "year": 2022,
-      "citations": 76,
+      "citations": 77,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:3fE2CSJIrl8C",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9456713464190893147"
-    },
-    {
-      "id": "AqcNAskAAAAJ:dhFuZR0502QC",
-      "title": "Minimal and hybrid hydrogenases are active from archaea",
-      "authors": "C Greening, PR Cabotaje, LEV Alvarado, PM Leung, H Land, ...",
-      "venue": "Cell 187 (13), 3357-3372. e19, 2024",
-      "year": 2024,
-      "citations": 66,
-      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:dhFuZR0502QC",
-      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18432882161635902826"
     },
     {
       "id": "AqcNAskAAAAJ:L8Ckcad2t8MC",
@@ -49,9 +39,29 @@
       "authors": "A Cornman, J West-Roberts, AP Camargo, S Roux, M Beracochea, ...",
       "venue": "bioRxiv, 2024.08. 14.607850, 2024",
       "year": 2024,
-      "citations": 65,
+      "citations": 71,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:L8Ckcad2t8MC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=9939821903573977288"
+    },
+    {
+      "id": "AqcNAskAAAAJ:dhFuZR0502QC",
+      "title": "Minimal and hybrid hydrogenases are active from archaea",
+      "authors": "C Greening, PR Cabotaje, LEV Alvarado, PM Leung, H Land, ...",
+      "venue": "Cell 187 (13), 3357-3372. e19, 2024",
+      "year": 2024,
+      "citations": 68,
+      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:dhFuZR0502QC",
+      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=18432882161635902826"
+    },
+    {
+      "id": "AqcNAskAAAAJ:d1gkVwhDpl0C",
+      "title": "A novel streptococcal cell–cell communication peptide promotes pneumococcal virulence and biofilm formation",
+      "authors": "RA Cuevas, R Eutsey, A Kadam, JA West‐Roberts, CA Woolford, ...",
+      "venue": "Molecular microbiology 105 (4), 554-571, 2017",
+      "year": 2017,
+      "citations": 55,
+      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:d1gkVwhDpl0C",
+      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15698887659821955468"
     },
     {
       "id": "AqcNAskAAAAJ:2osOgNQ5qMEC",
@@ -64,22 +74,12 @@
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7306526437701181833"
     },
     {
-      "id": "AqcNAskAAAAJ:d1gkVwhDpl0C",
-      "title": "A novel streptococcal cell–cell communication peptide promotes pneumococcal virulence and biofilm formation",
-      "authors": "RA Cuevas, R Eutsey, A Kadam, JA West‐Roberts, CA Woolford, ...",
-      "venue": "Molecular microbiology 105 (4), 554-571, 2017",
-      "year": 2017,
-      "citations": 54,
-      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:d1gkVwhDpl0C",
-      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15698887659821955468"
-    },
-    {
       "id": "AqcNAskAAAAJ:Wp0gIr-vW9MC",
       "title": "Infant gut DNA bacteriophage strain persistence during the first 3 years of life",
       "authors": "YC Lou, LX Chen, AL Borges, J West-Roberts, BA Firek, MJ Morowitz, ...",
       "venue": "Cell host & microbe 32 (1), 35-47. e6, 2024",
       "year": 2024,
-      "citations": 51,
+      "citations": 53,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:Wp0gIr-vW9MC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16482587620178272966"
     },
@@ -89,7 +89,7 @@
       "authors": "YC Lou, J Hoff, MR Olm, J West-Roberts, S Diamond, BA Firek, ...",
       "venue": "Microbiome 11 (1), 36, 2023",
       "year": 2023,
-      "citations": 42,
+      "citations": 44,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:0EnyYjriUFMC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=2730536152256776729"
     },
@@ -99,7 +99,7 @@
       "authors": "LE Valentin-Alvarado, KE Appler, V De Anda, MC Schoelmerich, ...",
       "venue": "Nature Communications 15 (1), 6384, 2024",
       "year": 2024,
-      "citations": 39,
+      "citations": 41,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:4DMP91E08xMC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=809577518363207030"
     },
@@ -109,7 +109,7 @@
       "authors": "JA West-Roberts, PB Matheus-Carnevali, MC Schoelmerich, B Al-Shayeb, ...",
       "venue": "BioRxiv, 2021.08. 23.457424, 2021",
       "year": 2021,
-      "citations": 36,
+      "citations": 37,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:UebtZRa9Y70C",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=15433836066379879916"
     },
@@ -119,7 +119,7 @@
       "authors": "N Jha, J Kravitz, J West-Roberts, C Lu, AP Camargo, S Roux, A Cornman, ...",
       "venue": "Science Advances 11 (25), eadv5109, 2025",
       "year": 2025,
-      "citations": 31,
+      "citations": 33,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:-f6ydRqryjwC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13176599919590584982"
     },
@@ -149,9 +149,19 @@
       "authors": "R Keren, R Méheust, JM Santini, A Thomas, J West-Roberts, JF Banfield, ...",
       "venue": "",
       "year": 2022,
-      "citations": 23,
+      "citations": 24,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:hqOjcs7Dif8C",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=13487166268931529896"
+    },
+    {
+      "id": "AqcNAskAAAAJ:_FxGoFyzp5QC",
+      "title": "Little genetic structure in a Bornean endemic small mammal across a steep ecological gradient",
+      "authors": "LD Parker, MTR Hawkins, M Camacho‐Sanchez, MG Campana, ...",
+      "venue": "Molecular Ecology 29 (21), 4074-4090, 2020",
+      "year": 2020,
+      "citations": 21,
+      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:_FxGoFyzp5QC",
+      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16431270345916388178"
     },
     {
       "id": "AqcNAskAAAAJ:mVmsd5A6BfQC",
@@ -162,16 +172,6 @@
       "citations": 20,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:mVmsd5A6BfQC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=14437458963464482070"
-    },
-    {
-      "id": "AqcNAskAAAAJ:_FxGoFyzp5QC",
-      "title": "Little genetic structure in a Bornean endemic small mammal across a steep ecological gradient",
-      "authors": "LD Parker, MTR Hawkins, M Camacho‐Sanchez, MG Campana, ...",
-      "venue": "Molecular Ecology 29 (21), 4074-4090, 2020",
-      "year": 2020,
-      "citations": 20,
-      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:_FxGoFyzp5QC",
-      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=16431270345916388178"
     },
     {
       "id": "AqcNAskAAAAJ:qxL8FJ1GzNcC",
@@ -189,7 +189,7 @@
       "authors": "MY Voutsinos, JA West-Roberts, R Sachdeva, JW Moreau, JF Banfield",
       "venue": "BMC biology 22 (1), 41, 2024",
       "year": 2024,
-      "citations": 15,
+      "citations": 16,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:9ZlFYXVOiuMC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=17440379649376048840"
     },
@@ -204,6 +204,16 @@
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=3484479817417683279"
     },
     {
+      "id": "AqcNAskAAAAJ:7PzlFSSx8tAC",
+      "title": "Diverse genomic embedding benchmark for functional evaluation across the tree of life",
+      "authors": "J West-Roberts, J Kravitz, N Jha, A Cornman, Y Hwang",
+      "venue": "bioRxiv, 2024.07. 10.602933, 2024",
+      "year": 2024,
+      "citations": 14,
+      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:7PzlFSSx8tAC",
+      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7972057440978765441"
+    },
+    {
       "id": "AqcNAskAAAAJ:aqlVkmm33-oC",
       "title": "Giant genes are rare but implicated in cell wall degradation by predatory bacteria",
       "authors": "J West-Roberts, L Valentin-Alvarado, S Mullen, R Sachdeva, J Smith, ...",
@@ -212,16 +222,6 @@
       "citations": 14,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:aqlVkmm33-oC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11419988099965847011"
-    },
-    {
-      "id": "AqcNAskAAAAJ:7PzlFSSx8tAC",
-      "title": "Diverse genomic embedding benchmark for functional evaluation across the tree of life",
-      "authors": "J West-Roberts, J Kravitz, N Jha, A Cornman, Y Hwang",
-      "venue": "bioRxiv, 2024.07. 10.602933, 2024",
-      "year": 2024,
-      "citations": 13,
-      "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:7PzlFSSx8tAC",
-      "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=7972057440978765441"
     },
     {
       "id": "AqcNAskAAAAJ:hC7cP41nSMkC",
@@ -249,7 +249,7 @@
       "authors": "MC Schoelmerich, R Sachdeva, J West-Roberts, L Waldburger, ...",
       "venue": "Plos Biology 21 (1), e3001980, 2023",
       "year": 2023,
-      "citations": 11,
+      "citations": 12,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:Zph67rFs4hoC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=11322134070204550038"
     },
@@ -299,7 +299,7 @@
       "authors": "N Jha, J Kravitz, J West-Roberts, A Camargo, S Roux, A Cornman, ...",
       "venue": "bioRxiv, 2024.11. 19.624387, 2024",
       "year": 2024,
-      "citations": 2,
+      "citations": 3,
       "scholarUrl": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=AqcNAskAAAAJ&pagesize=100&citation_for_view=AqcNAskAAAAJ:ZeXyd9-uunAC",
       "citedByUrl": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=4471121870933627465"
     },
