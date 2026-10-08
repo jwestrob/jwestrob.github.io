@@ -141,7 +141,7 @@ p {
 
 .label {
   margin: 0;
-  color: var(--gold);
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 11.5px;
   font-weight: 400;
@@ -154,9 +154,13 @@ p {
   color: var(--dim);
 }
 
+.case-keep {
+  text-transform: none;
+}
+
 .index-num {
   margin: 0;
-  color: var(--gold);
+  color: var(--dim);
   font-family: var(--mono);
   font-size: 11.5px;
   font-variant-numeric: tabular-nums;
@@ -333,15 +337,16 @@ main {
   display: grid;
   width: var(--page);
   grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  align-items: baseline;
   gap: 28px var(--gutter);
-  padding: 52px 0 44px;
+  padding: 56px 0 48px;
   margin: 0 auto;
 }
 
 .footer-brand {
   color: var(--paper-strong);
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.015em;
   line-height: 1.2;
 }
@@ -392,26 +397,22 @@ main {
 .split {
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  align-items: baseline;
   column-gap: var(--gutter);
 }
 
 .rail {
   position: sticky;
-  top: 28px;
-  align-self: start;
+  top: 32px;
 }
 
 .section {
-  padding: 40px 0 56px;
+  padding: 48px 0 68px;
   border-top: 1px solid var(--rule);
 }
 
 .page-head {
-  padding: 76px 0 64px;
-}
-
-.page-head .label {
-  padding-top: 14px;
+  padding: 96px 0 80px;
 }
 
 .page h1 {
@@ -425,7 +426,7 @@ main {
 }
 
 .page h1 a {
-  color: var(--gold-bright);
+  color: inherit;
   text-decoration: underline;
   text-decoration-color: var(--gold-rule);
   text-decoration-thickness: 1px;
@@ -433,6 +434,7 @@ main {
 }
 
 .page h1 a:hover {
+  color: var(--gold-bright);
   text-decoration-color: var(--gold-bright);
 }
 
@@ -526,27 +528,28 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: var(--gutter);
-  align-items: start;
-  padding: 52px 0 96px;
+  padding: 56px 0 104px;
 }
 
 .hero-copy {
-  position: sticky;
-  top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
 }
 
 .hero-lede {
   margin: 0;
   color: var(--paper-strong);
-  font-size: clamp(25px, 2.35vw, 33px);
-  font-weight: 300;
-  letter-spacing: -0.015em;
-  line-height: 1.28;
+  font-size: clamp(26px, 2.75vw, 39px);
+  font-weight: 350;
+  letter-spacing: -0.018em;
+  line-height: 1.22;
 }
 
 .hero-sub {
   max-width: 470px;
-  margin: 26px 0 0;
+  margin: 0;
   color: var(--muted);
   font-size: 18px;
   line-height: 1.6;
@@ -563,7 +566,7 @@ main {
 
 .structure-canvas-wrap {
   position: relative;
-  aspect-ratio: 1.12;
+  aspect-ratio: 1.34;
   min-height: 340px;
 }
 
@@ -684,8 +687,8 @@ main {
 .index-name {
   color: var(--paper-strong);
   font-size: clamp(24px, 2.4vw, 32px);
-  font-weight: 300;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: -0.015em;
   line-height: 1.15;
   transition: color 0.2s var(--ease);
 }
@@ -739,15 +742,15 @@ main {
 /* ------------------------------------------------------------------ */
 
 .project {
-  padding: 48px 0 64px;
+  padding: 56px 0 76px;
 }
 
 .project-head h2 {
   margin: 12px 0 0;
   color: var(--paper-strong);
   font-size: clamp(32px, 3.2vw, 44px);
-  font-weight: 300;
-  letter-spacing: -0.025em;
+  font-weight: 350;
+  letter-spacing: -0.02em;
   line-height: 1.05;
 }
 
@@ -756,13 +759,10 @@ main {
 }
 
 .project-status {
-  display: inline-block;
-  margin: 18px 0 0;
-  padding: 4px 8px 3px;
-  border: 1px solid var(--rule-strong);
-  color: var(--muted);
+  margin: 14px 0 0;
+  color: var(--dim);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 11.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -779,8 +779,8 @@ main {
 .project-body p:first-child {
   color: var(--paper-strong);
   font-size: clamp(21px, 1.9vw, 24px);
-  font-weight: 300;
-  letter-spacing: -0.01em;
+  font-weight: 400;
+  letter-spacing: -0.008em;
   line-height: 1.42;
 }
 
@@ -887,7 +887,7 @@ main {
   color: var(--paper-strong);
   font-size: 44px;
   font-variant-numeric: lining-nums;
-  font-weight: 300;
+  font-weight: 350;
   letter-spacing: -0.02em;
   line-height: 1;
 }
@@ -913,7 +913,7 @@ main {
 
 .paper-contribution {
   margin: 0 0 8px;
-  color: var(--gold);
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -968,17 +968,23 @@ main {
 }
 
 .paper-cites {
-  display: grid;
-  align-content: start;
-  gap: 4px;
-  padding-top: 4px;
+  padding-top: 3px;
   text-align: right;
 }
 
-.paper-cites small {
+.paper-list-head {
+  padding: 14px 0 13px;
+  border-top: 1px solid var(--rule);
+}
+
+.paper-list-head-main {
+  display: flex;
+  max-width: 860px;
+  justify-content: space-between;
+  gap: 24px;
   color: var(--dim);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 10.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1057,7 +1063,7 @@ a.paper-cites:hover span {
 }
 
 .record time {
-  color: var(--gold);
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 11.5px;
   font-variant-numeric: tabular-nums;
@@ -1084,7 +1090,7 @@ a.paper-cites:hover span {
   display: inline-block;
   color: var(--paper-strong);
   font-size: clamp(26px, 4.6vw, 60px);
-  font-weight: 300;
+  font-weight: 350;
   letter-spacing: -0.025em;
   line-height: 1.1;
   overflow-wrap: anywhere;
@@ -1142,7 +1148,7 @@ a.paper-cites:hover span {
 .link-rows-label {
   color: var(--paper-strong);
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.015em;
   transition: color 0.2s var(--ease);
 }
@@ -1195,8 +1201,8 @@ a.paper-cites:hover span {
   margin-top: 54px;
   color: var(--paper-strong);
   font-size: clamp(28px, 2.8vw, 38px);
-  font-weight: 300;
-  letter-spacing: -0.025em;
+  font-weight: 350;
+  letter-spacing: -0.02em;
   line-height: 1.05;
   transition: color 0.2s var(--ease);
 }
@@ -1268,8 +1274,16 @@ a.paper-cites:hover span {
   }
 
   .hero-copy {
-    position: static;
+    display: block;
     max-width: 640px;
+  }
+
+  .hero-sub {
+    margin-top: 26px;
+  }
+
+  .structure-canvas-wrap {
+    aspect-ratio: 1.12;
   }
 
   .readouts {
@@ -1349,6 +1363,7 @@ a.paper-cites:hover span {
 
   .page h1 {
     font-size: 34px;
+    font-weight: 350;
   }
 
   .page-lede {

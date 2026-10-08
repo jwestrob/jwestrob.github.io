@@ -8,11 +8,11 @@ const FEATURED_PAPERS = new Map([
   ],
   [
     "AqcNAskAAAAJ:aqlVkmm33-oC",
-    { rank: 1, label: "Giant proteins preprint" },
+    { rank: 1, label: "First author · bioRxiv" },
   ],
   [
     "AqcNAskAAAAJ:UebtZRa9Y70C",
-    { rank: 2, label: "Chloroflexi preprint" },
+    { rank: 2, label: "First author · bioRxiv" },
   ],
 ]);
 
@@ -429,9 +429,10 @@ class PublicationFeed {
       groups.push(this.groupElement({ year, note: plural(total, "paper"), records }));
     }
 
-    this.list.replaceChildren(...groups);
     const total = featured.length + rest.length;
-    this.more.hidden = shownFeatured.length + shownRest.length >= total;
+    const shown = shownFeatured.length + shownRest.length;
+    this.list.replaceChildren(this.listHead(shown, total), ...groups);
+    this.more.hidden = shown >= total;
     if (!this.more.hidden) this.more.textContent = `Show all ${total} papers`;
     if (!total) {
       const empty = document.createElement("p");
@@ -439,6 +440,22 @@ class PublicationFeed {
       empty.textContent = "Try another search.";
       this.list.append(empty);
     }
+  }
+
+  listHead(shown, total) {
+    const head = document.createElement("div");
+    head.className = "split paper-list-head";
+    const main = document.createElement("div");
+    main.className = "paper-list-head-main";
+    const count = document.createElement("span");
+    if (this.query) count.textContent = `${total} ${total === 1 ? "match" : "matches"}`;
+    else if (shown < total) count.textContent = `${shown} of ${total} shown`;
+    else count.textContent = plural(total, "paper");
+    const cited = document.createElement("span");
+    cited.textContent = "Cited by";
+    main.append(count, cited);
+    head.append(document.createElement("div"), main);
+    return head;
   }
 
   groupElement({ label, year, note, records }) {
@@ -515,11 +532,9 @@ class PublicationFeed {
         : document.createElement("div");
     cites.className = "paper-cites";
     if (citations > 0) {
-      const label = document.createElement("small");
-      label.textContent = "Cited by";
       const value = document.createElement("span");
       value.textContent = citations.toLocaleString("en-US");
-      cites.append(label, value);
+      cites.append(value);
     }
     if (cites.tagName === "A") {
       cites.href = record.citedByUrl;
