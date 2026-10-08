@@ -102,11 +102,6 @@ p {
   text-wrap: pretty;
 }
 
-em {
-  color: var(--gold-bright);
-  font-style: italic;
-}
-
 .skip-link {
   position: fixed;
   z-index: 100;
@@ -698,7 +693,6 @@ main {
 .index-desc {
   color: var(--muted);
   font-size: 17px;
-  font-style: italic;
 }
 
 .index-status {
@@ -1079,7 +1073,6 @@ a.paper-cites:hover span {
 .record-org {
   color: var(--muted);
   font-size: 17px;
-  font-style: italic;
   line-height: 1.4;
 }
 
