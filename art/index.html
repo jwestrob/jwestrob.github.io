@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090805">
+  <meta name="theme-color" content="#080705">
   <title>Generative art · Jacob West-Roberts</title>
   <meta name="description" content="Generative browser experiments by Jacob West-Roberts.">
   <link rel="canonical" href="https://jwestrob.github.io/art/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -20,7 +20,6 @@
       <a class="brand" href="/">Jacob West-Roberts</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-        <a href="/">Home</a>
         <a href="/about/">About</a>
         <a href="/projects/">Projects</a>
         <a href="/publications/">Papers</a>
@@ -30,28 +29,66 @@
   </header>
 
   <main class="page" id="main">
-    <p class="page-kicker">Generative art</p>
-    <h1>A few mathematical toys I made.</h1>
-    <p class="page-lede">
-      Some of these are heavier than the rest of the site, especially on a phone.
-    </p>
-    <div class="art-grid">
-      <a href="/heliophase.html"><strong>Heliophase</strong><span>Open ↗</span></a>
-      <a href="/hyperspin.html"><strong>Hyperspin</strong><span>Open ↗</span></a>
-      <a href="/quaternion_julia.html"><strong>Quaternion Julia</strong><span>Open ↗</span></a>
-      <a href="/quasicrystal.html"><strong>Quasicrystal</strong><span>Open ↗</span></a>
-    </div>
+    <header class="page-head split">
+      <p class="label rise">Generative art</p>
+      <div>
+        <h1 class="rise" style="--i:1">A few mathematical toys I made.</h1>
+        <p class="page-lede rise" style="--i:2">Some of these are heavier than the rest of the site, especially on a phone.</p>
+      </div>
+    </header>
+
+    <section class="section split" aria-labelledby="pieces-heading">
+      <div class="rail">
+        <h2 class="label" id="pieces-heading">Pieces</h2>
+        <p class="rail-note">Four interactive works</p>
+      </div>
+      <div class="art-grid">
+        <a class="plate art-card" href="/heliophase.html">
+          <span class="index-num">01</span>
+          <span>
+            <strong>Heliophase</strong>
+            <span class="art-open">Open <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+        <a class="plate art-card" href="/hyperspin.html">
+          <span class="index-num">02</span>
+          <span>
+            <strong>Hyperspin</strong>
+            <span class="art-open">Open <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+        <a class="plate art-card" href="/quaternion_julia.html">
+          <span class="index-num">03</span>
+          <span>
+            <strong>Quaternion Julia</strong>
+            <span class="art-open">Open <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+        <a class="plate art-card" href="/quasicrystal.html">
+          <span class="index-num">04</span>
+          <span>
+            <strong>Quasicrystal</strong>
+            <span class="art-open">Open <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>© <span id="current-year">2026</span> Jacob West-Roberts</span>
-      <div class="footer-links">
+      <div>
+        <a class="footer-brand" href="/">Jacob West-Roberts</a>
+        <p class="footer-sub">Computational biology<br>Banfield Lab · UC Berkeley</p>
+      </div>
+      <nav class="footer-links" aria-label="Elsewhere">
         <a href="https://github.com/jwestrob" target="_blank" rel="noopener">GitHub</a>
         <a href="https://scholar.google.com/citations?user=AqcNAskAAAAJ" target="_blank" rel="noopener">Scholar</a>
         <a href="https://linkedin.com/in/jwestrob" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="/art/" aria-current="page">Art</a>
-      </div>
+        <a href="https://orcid.org/0009-0002-3516-2666" target="_blank" rel="noopener">ORCID</a>
+        <a href="/art/">Art</a>
+      </nav>
+      <p class="colophon">© <span id="current-year">2026</span> Jacob West-Roberts · Set in Newsreader and IBM Plex Mono</p>
     </div>
   </footer>
   <script type="module" src="/js/site.js"></script>

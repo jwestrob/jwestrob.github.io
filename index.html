@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090805">
+  <meta name="theme-color" content="#080705">
   <meta name="color-scheme" content="dark">
   <title>Jacob West-Roberts · Computational Biology</title>
   <meta name="description" content="Jacob West-Roberts is a postdoctoral researcher in Jill Banfield's lab at UC Berkeley.">
@@ -18,7 +18,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <script type="application/ld+json">
   {
@@ -49,7 +49,6 @@
       <a class="brand" href="/" aria-current="page">Jacob West-Roberts</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-        <a href="/" aria-current="page">Home</a>
         <a href="/about/">About</a>
         <a href="/projects/">Projects</a>
         <a href="/publications/">Papers</a>
@@ -59,53 +58,160 @@
   </header>
 
   <main class="home" id="main">
-    <div class="home-copy">
-      <p class="role">Postdoc · Banfield Lab · UC Berkeley</p>
-      <h1>Jacob West-Roberts</h1>
-      <p class="intro">
-        I work on microbes, massive datasets, and the kind of proteins that make
-        structure predictors nervous.
-      </p>
-      <p class="intro">
-        I build computational systems for metagenomics, protein structure,
-        comparative genomics, and AI-assisted biological research.
-      </p>
-      <div class="plain-links">
-        <a href="/projects/">What I’m working on <span aria-hidden="true">→</span></a>
-        <a href="/publications/">Papers <span aria-hidden="true">→</span></a>
-        <a href="https://linkedin.com/in/jwestrob" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+    <section class="masthead">
+      <div class="masthead-top rise">
+        <p class="label">Computational biology</p>
+        <p class="label label-quiet">Postdoctoral researcher · Banfield Lab · UC Berkeley</p>
       </div>
-    </div>
+      <h1 class="masthead-name rise" style="--i:1">Jacob <span class="nowrap">West-Roberts</span></h1>
+    </section>
 
-    <figure class="structure">
-      <div class="structure-head">
-        <div>
-          <div class="structure-label">Predicted protein structure</div>
-          <strong>single segment · 2,000 Cα</strong>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="hero-lede rise" style="--i:2">
+          I work on microbes, massive datasets, and the kind of proteins that
+          make structure predictors <em>nervous</em>.
+        </p>
+        <p class="hero-sub rise" style="--i:3">
+          I build computational systems for metagenomics, protein structure,
+          comparative genomics, and AI-assisted biological research.
+        </p>
+        <div class="action-links rise" style="--i:4">
+          <a href="/projects/">Projects <span aria-hidden="true">→</span></a>
+          <a href="/publications/">Papers <span aria-hidden="true">→</span></a>
+          <a href="/contact/">Contact <span aria-hidden="true">→</span></a>
         </div>
-        <span class="structure-status" id="structure-status">loading</span>
       </div>
-      <div class="structure-canvas-wrap">
-        <canvas id="structure-canvas" width="720" height="660" tabindex="0" aria-label="Predicted Cα trace of a protein segment containing 2,000 residues. Drag or use arrow keys to rotate."></canvas>
-        <div class="structure-loading" id="structure-loading" role="status">Loading coordinates</div>
+
+      <figure class="plate structure rise" style="--i:3">
+        <div class="plate-bar">
+          <span class="label">Fig. 1 · Predicted protein structure</span>
+          <span class="plate-readout" id="structure-status">loading</span>
+        </div>
+        <div class="structure-canvas-wrap">
+          <canvas id="structure-canvas" width="720" height="640" tabindex="0" aria-label="Predicted Cα trace of a protein segment containing 2,000 residues. Drag or use arrow keys to rotate."></canvas>
+          <div class="structure-loading" id="structure-loading" role="status">Loading coordinates</div>
+        </div>
+        <dl class="readouts">
+          <div><dt>Residues</dt><dd id="structure-residues">2,000</dd></div>
+          <div><dt>Mean pLDDT</dt><dd id="structure-plddt">88.1</dd></div>
+          <div><dt>Model</dt><dd>Protenix</dd></div>
+          <div><dt>Rotation</dt><dd id="structure-angle">32.1°</dd></div>
+        </dl>
+        <figcaption>
+          Cα trace of one segment of an unusually large protein.<span class="touch-note"> Drag to rotate.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="section split" aria-labelledby="work-heading">
+      <div class="rail">
+        <h2 class="label" id="work-heading">Selected work</h2>
+        <p class="rail-note">Five projects</p>
       </div>
-      <figcaption>
-        Coordinates predicted with Protenix from one segment of an unusually
-        large protein.
-        <span class="touch-note"> On phones it stays still unless you drag it.</span>
-      </figcaption>
-    </figure>
+      <ol class="index-list">
+        <li>
+          <a class="index-row" href="/projects/#sharur">
+            <span class="index-num">01</span>
+            <span class="index-name">Sharur</span>
+            <span class="index-desc">Metagenomic research system</span>
+            <span class="index-status">Pre-release</span>
+            <span class="index-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="index-row" href="/projects/#giant-proteins">
+            <span class="index-num">02</span>
+            <span class="index-name">Giant proteins</span>
+            <span class="index-desc">Omnitrophota</span>
+            <span class="index-status">Preprint · 2023</span>
+            <span class="index-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="index-row" href="/projects/#talea">
+            <span class="index-num">03</span>
+            <span class="index-name">Talea</span>
+            <span class="index-desc">Sequence → geometry</span>
+            <span class="index-status">Public on GitHub</span>
+            <span class="index-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="index-row" href="/projects/#elsa">
+            <span class="index-num">04</span>
+            <span class="index-name">ELSA</span>
+            <span class="index-desc">Genome context</span>
+            <span class="index-status">Public on GitHub</span>
+            <span class="index-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="index-row" href="/projects/#gaia">
+            <span class="index-num">05</span>
+            <span class="index-name">Gaia</span>
+            <span class="index-desc">Protein search</span>
+            <span class="index-status">Science Advances · 2025</span>
+            <span class="index-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section split" aria-labelledby="papers-heading">
+      <div class="rail">
+        <h2 class="label" id="papers-heading">Selected papers</h2>
+        <p class="rail-note"><a href="/publications/">All papers →</a></p>
+      </div>
+      <ol class="index-list">
+        <li>
+          <a class="index-row index-row--paper" href="https://doi.org/10.1126/sciadv.adv5109" target="_blank" rel="noopener">
+            <span class="index-num">2025</span>
+            <span>
+              <span class="index-name">Gaia: An AI-enabled genomic context–aware platform for protein sequence annotation</span>
+              <span class="index-status">Science Advances · Co-first author</span>
+            </span>
+            <span class="index-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
+          <a class="index-row index-row--paper" href="https://doi.org/10.1101/2023.11.21.568195" target="_blank" rel="noopener">
+            <span class="index-num">2023</span>
+            <span>
+              <span class="index-name">Giant genes are rare but implicated in cell wall degradation by predatory bacteria</span>
+              <span class="index-status">bioRxiv · First author</span>
+            </span>
+            <span class="index-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
+          <a class="index-row index-row--paper" href="https://doi.org/10.1101/2021.08.23.457424" target="_blank" rel="noopener">
+            <span class="index-num">2021</span>
+            <span>
+              <span class="index-name">The Chloroflexi supergroup is metabolically diverse and representatives have novel genes for non-photosynthesis based CO<sub>2</sub> fixation</span>
+              <span class="index-status">bioRxiv · First author</span>
+            </span>
+            <span class="index-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ol>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <span>© <span id="current-year">2026</span> Jacob West-Roberts</span>
-      <div class="footer-links">
+      <div>
+        <a class="footer-brand" href="/">Jacob West-Roberts</a>
+        <p class="footer-sub">Computational biology<br>Banfield Lab · UC Berkeley</p>
+      </div>
+      <nav class="footer-links" aria-label="Elsewhere">
         <a href="https://github.com/jwestrob" target="_blank" rel="noopener">GitHub</a>
         <a href="https://scholar.google.com/citations?user=AqcNAskAAAAJ" target="_blank" rel="noopener">Scholar</a>
         <a href="https://linkedin.com/in/jwestrob" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://orcid.org/0009-0002-3516-2666" target="_blank" rel="noopener">ORCID</a>
         <a href="/art/">Art</a>
-      </div>
+      </nav>
+      <p class="colophon">© <span id="current-year">2026</span> Jacob West-Roberts · Set in Newsreader and IBM Plex Mono</p>
     </div>
   </footer>
   <script type="module" src="/js/site.js"></script>

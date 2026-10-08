@@ -45,6 +45,8 @@ class StructureViewer {
     this.context = canvas.getContext("2d", { alpha: false });
     this.loading = $("#structure-loading");
     this.status = $("#structure-status");
+    this.angleReadout = $("#structure-angle");
+    this.angleText = "";
     this.model = null;
     this.rotationX = -0.12;
     this.rotationY = 0.56;
@@ -83,6 +85,7 @@ class StructureViewer {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       this.model = await response.json();
       this.loading.hidden = true;
+      this.updateReadouts();
       this.resize();
       this.updateStatus();
       this.updateAnimation();
@@ -150,6 +153,27 @@ class StructureViewer {
       this.updateAnimation();
     });
     document.addEventListener("visibilitychange", () => this.updateAnimation());
+  }
+
+  updateReadouts() {
+    const residues = $("#structure-residues");
+    if (residues && Number.isFinite(this.model.residueCount)) {
+      residues.textContent = this.model.residueCount.toLocaleString("en-US");
+    }
+    const plddt = $("#structure-plddt");
+    if (plddt && Number.isFinite(this.model.confidence?.mean)) {
+      plddt.textContent = this.model.confidence.mean.toFixed(1);
+    }
+  }
+
+  updateAngle() {
+    if (!this.angleReadout) return;
+    const degrees = ((((this.rotationY * 180) / Math.PI) % 360) + 360) % 360;
+    const text = `${degrees.toFixed(1)}°`;
+    if (text !== this.angleText) {
+      this.angleReadout.textContent = text;
+      this.angleText = text;
+    }
   }
 
   updateStatus() {
@@ -251,6 +275,7 @@ class StructureViewer {
       previous = current;
     }
     context.restore();
+    this.updateAngle();
   }
 
   drawGrid(context, width, height) {
@@ -310,6 +335,7 @@ class PublicationFeed {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       this.records = data.publications || [];
+      this.renderMetrics(data);
       this.render();
     } catch (error) {
       this.list.replaceChildren(this.errorElement());
@@ -318,36 +344,96 @@ class PublicationFeed {
     }
   }
 
-  filteredRecords() {
-    return this.records
-      .filter((record) => {
-        if (!this.query) return true;
-        return [record.title, record.authors, record.venue, record.year]
-          .filter(Boolean)
-          .join(" ")
-          .toLocaleLowerCase()
-          .includes(this.query);
-      })
+  renderMetrics(data) {
+    const figures = $("#scholar-figures", this.root);
+    if (figures && data.metrics) {
+      const items = [
+        ["Citations", data.metrics.citations?.all],
+        ["h-index", data.metrics.hIndex?.all],
+        ["i10-index", data.metrics.i10Index?.all],
+        ["Scholar records", this.records.length],
+      ].filter(([, value]) => Number.isFinite(value));
+      figures.replaceChildren(
+        ...items.map(([label, value]) => {
+          const group = document.createElement("div");
+          const term = document.createElement("dt");
+          term.className = "figure-label";
+          term.textContent = label;
+          const detail = document.createElement("dd");
+          detail.className = "figure-value";
+          detail.textContent = value.toLocaleString("en-US");
+          group.append(term, detail);
+          return group;
+        }),
+      );
+    }
+
+    const updated = $("#scholar-updated", this.root);
+    const fetched = new Date(data.source?.fetchedAt);
+    if (updated && !Number.isNaN(fetched.getTime())) {
+      updated.textContent = `Updated ${fetched.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        timeZone: "UTC",
+      })}`;
+    }
+  }
+
+  matches(record) {
+    if (!this.query) return true;
+    return [record.title, record.authors, record.venue, record.year]
+      .filter(Boolean)
+      .join(" ")
+      .toLocaleLowerCase()
+      .includes(this.query);
+  }
+
+  render() {
+    const filtered = this.records.filter((record) => this.matches(record));
+    const featured = this.query
+      ? []
+      : filtered
+          .filter((record) => FEATURED_PAPERS.has(record.id))
+          .sort((a, b) => FEATURED_PAPERS.get(a.id).rank - FEATURED_PAPERS.get(b.id).rank);
+    const rest = filtered
+      .filter((record) => !featured.includes(record))
       .sort(
         (a, b) =>
-          (FEATURED_PAPERS.get(a.id)?.rank ?? Number.POSITIVE_INFINITY) -
-            (FEATURED_PAPERS.get(b.id)?.rank ?? Number.POSITIVE_INFINITY) ||
           (b.year || 0) - (a.year || 0) ||
           (b.citations || 0) - (a.citations || 0) ||
           a.title.localeCompare(b.title),
       );
-  }
 
-  render() {
-    const filtered = this.filteredRecords();
-    const shown = filtered.slice(0, this.limit);
-    this.list.replaceChildren(...shown.map((record) => this.paperElement(record)));
-
-    this.more.hidden = shown.length >= filtered.length;
-    if (!this.more.hidden) {
-      this.more.textContent = "Show all papers";
+    const shownFeatured = featured.slice(0, this.limit);
+    const shownRest = rest.slice(0, Math.max(0, this.limit - shownFeatured.length));
+    const groups = [];
+    if (shownFeatured.length) {
+      groups.push(
+        this.groupElement({
+          label: "Selected",
+          note: plural(featured.length, "paper"),
+          records: shownFeatured,
+        }),
+      );
     }
-    if (!filtered.length) {
+
+    const byYear = new Map();
+    for (const record of shownRest) {
+      const year = record.year || "Undated";
+      if (!byYear.has(year)) byYear.set(year, []);
+      byYear.get(year).push(record);
+    }
+    for (const [year, records] of byYear) {
+      const total = rest.filter((record) => (record.year || "Undated") === year).length;
+      groups.push(this.groupElement({ year, note: plural(total, "paper"), records }));
+    }
+
+    this.list.replaceChildren(...groups);
+    const total = featured.length + rest.length;
+    this.more.hidden = shownFeatured.length + shownRest.length >= total;
+    if (!this.more.hidden) this.more.textContent = `Show all ${total} papers`;
+    if (!total) {
       const empty = document.createElement("p");
       empty.className = "noscript-note";
       empty.textContent = "Try another search.";
@@ -355,15 +441,36 @@ class PublicationFeed {
     }
   }
 
+  groupElement({ label, year, note, records }) {
+    const section = document.createElement("section");
+    section.className = "section split paper-group";
+
+    const rail = document.createElement("div");
+    rail.className = "rail";
+    const heading = document.createElement("h2");
+    if (year) {
+      heading.className = "paper-group-year";
+      heading.textContent = year;
+    } else {
+      heading.className = "label";
+      heading.textContent = label;
+    }
+    const count = document.createElement("p");
+    count.className = "rail-note";
+    count.textContent = note;
+    rail.append(heading, count);
+
+    const rows = document.createElement("div");
+    rows.className = "paper-rows";
+    rows.append(...records.map((record) => this.paperElement(record)));
+    section.append(rail, rows);
+    return section;
+  }
+
   paperElement(record) {
     const article = document.createElement("article");
     article.className = "paper";
     const featured = FEATURED_PAPERS.get(record.id);
-    if (featured) article.classList.add("paper-featured");
-
-    const year = document.createElement("div");
-    year.className = "paper-year";
-    year.textContent = record.year || "—";
 
     const copy = document.createElement("div");
     if (featured) {
@@ -401,21 +508,26 @@ class PublicationFeed {
       copy.append(venue);
     }
 
+    const citations = record.citations || 0;
     const cites =
-      record.citations > 0 && record.citedByUrl
+      citations > 0 && record.citedByUrl
         ? document.createElement("a")
-        : document.createElement("span");
+        : document.createElement("div");
     cites.className = "paper-cites";
-    cites.textContent = record.citations
-      ? `${record.citations} citations`
-      : "0 citations";
+    if (citations > 0) {
+      const label = document.createElement("small");
+      label.textContent = "Cited by";
+      const value = document.createElement("span");
+      value.textContent = citations.toLocaleString("en-US");
+      cites.append(label, value);
+    }
     if (cites.tagName === "A") {
       cites.href = record.citedByUrl;
       cites.target = "_blank";
       cites.rel = "noopener";
     }
 
-    article.append(year, copy, cites);
+    article.append(copy, cites);
     return article;
   }
 
@@ -468,29 +580,31 @@ class PublicationFeed {
   }
 }
 
-function setupContactForm() {
-  const form = $("#contact-form");
-  if (!form) return;
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const name = String(data.get("name") || "").trim();
-    const email = String(data.get("email") || "").trim();
-    const message = String(data.get("message") || "").trim();
-    if (!name || !email || !message) {
-      $("#form-status").textContent = "Please fill out all three fields.";
-      return;
+function plural(count, noun) {
+  return `${count} ${noun}${count === 1 ? "" : "s"}`;
+}
+
+function setupCopyEmail() {
+  const button = $("#copy-email");
+  const status = $("#copy-status");
+  if (!button || !status) return;
+  let timer = null;
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(button.dataset.email);
+      status.textContent = "Copied";
+    } catch {
+      status.textContent = "Select the address to copy it";
     }
-    const subject = encodeURIComponent(`Website note from ${name}`);
-    const body = encodeURIComponent(`${message}\n\nFrom: ${name}\nEmail: ${email}`);
-    $("#form-status").textContent = "Opening your email app…";
-    window.location.href =
-      `mailto:jacobwestroberts@gmail.com?subject=${subject}&body=${body}`;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      status.textContent = "";
+    }, 2400);
   });
 }
 
 setupNavigation();
 if ($("#structure-canvas")) new StructureViewer($("#structure-canvas"));
 if ($("#papers-page")) new PublicationFeed($("#papers-page"));
-setupContactForm();
+setupCopyEmail();
 $("#current-year").textContent = String(new Date().getFullYear());

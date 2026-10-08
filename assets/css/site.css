@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,300..500&display=swap');
 
 :root {
   --bg: #0A0A0A;
@@ -103,24 +103,36 @@ h1 {
 .header-inner {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 24px;
   height: 100%;
   padding: 0 clamp(16px, 6vw, 48px)
 }
 
 .brand {
-  font-weight: 700;
-  letter-spacing: .02em;
-  color: #fff
+  color: #fbf6e8;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.01em
 }
 
 .nav {
   display: flex;
-  gap: 20px
+  flex-wrap: wrap;
+  gap: 8px 28px
 }
 
 .nav a {
-  color: var(--gold-soft)
+  color: #aaa088;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase
+}
+
+.nav a[aria-current="page"] {
+  color: #fbf6e8
 }
 
 .header-actions {

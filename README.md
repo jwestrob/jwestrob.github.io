@@ -6,7 +6,7 @@ A small, dependency-free static site. Each main route is its own HTML document:
 - `/about/` — brief bio
 - `/projects/` — Sharur, giant proteins, Talea, ELSA, and Gaia
 - `/publications/` — Google Scholar-backed papers
-- `/contact/` — email and mailto contact form
+- `/contact/` — email and profile links
 - `/art/` — older browser experiments
 
 There is no single-page router and no framework. Normal links load normal pages.
