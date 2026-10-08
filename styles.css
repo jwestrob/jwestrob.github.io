@@ -178,19 +178,14 @@ main {
   text-transform: uppercase;
 }
 
-.home-copy h1,
-.page h1 {
-  margin: 0;
+.home-copy h1 {
+  max-width: 640px;
+  margin: 20px 0 0;
   color: var(--paper-strong);
   font-size: clamp(52px, 7vw, 92px);
   font-weight: 500;
   letter-spacing: -0.065em;
   line-height: 0.94;
-}
-
-.home-copy h1 {
-  max-width: 640px;
-  margin-top: 20px;
 }
 
 .home-copy .intro {
@@ -323,13 +318,27 @@ main {
   max-width: var(--reading);
 }
 
-.page h1 {
-  margin-top: 12px;
-  font-size: clamp(46px, 7vw, 78px);
+.page-kicker {
+  margin: 0;
 }
 
-.page > h1:first-child {
-  margin-top: 0;
+.page h1 {
+  max-width: 940px;
+  margin: 18px 0 0;
+  color: var(--paper-strong);
+  font-size: clamp(30px, 3.4vw, 42px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+.page h1 a {
+  color: var(--gold-bright);
+  text-decoration: underline;
+  text-decoration-color: var(--gold-rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
 }
 
 .page-lede {
@@ -401,6 +410,16 @@ main {
   border-bottom: 1px solid var(--rule);
 }
 
+.project-head {
+  position: sticky;
+  top: 32px;
+  align-self: start;
+}
+
+.project-meta {
+  margin: 0;
+}
+
 .project h2 {
   margin: 5px 0 0;
   color: var(--paper-strong);
@@ -416,21 +435,62 @@ main {
   color: var(--muted);
 }
 
+.project-body p:first-child {
+  color: var(--paper);
+}
+
 .project-body p + p {
   margin-top: 14px;
 }
 
-.project-numbers {
+.project-status {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.project-figures {
+  max-width: 700px;
+  padding: 18px 0 0;
+  margin: 26px 0 0;
+  border-top: 1px solid var(--rule);
+}
+
+.project-figures figcaption {
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.project-figures ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 22px;
+  gap: 18px 48px;
   padding: 0;
-  margin: 20px 0 0;
+  margin: 16px 0 0;
   list-style: none;
 }
 
-.project-numbers li {
-  color: var(--paper);
+.project-figures li {
+  display: grid;
+  gap: 8px;
+}
+
+.project-figures strong {
+  color: var(--paper-strong);
+  font-size: clamp(32px, 3.4vw, 42px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.project-figures span {
+  color: var(--muted);
   font-family: var(--mono);
   font-size: 12px;
 }
@@ -840,7 +900,8 @@ main {
   }
 
   .page h1 {
-    font-size: 48px;
+    margin-top: 14px;
+    font-size: 28px;
   }
 
   .page-lede {
@@ -865,6 +926,10 @@ main {
     grid-template-columns: 1fr;
     gap: 18px;
     padding: 30px 0;
+  }
+
+  .project-head {
+    position: static;
   }
 
   .project h2 {

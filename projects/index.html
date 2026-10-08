@@ -30,16 +30,15 @@
   </header>
 
   <main class="page" id="main">
-    <h1>Projects</h1>
-    <p class="page-lede">
-      Here's what I've been working on lately.
-    </p>
+    <p class="page-kicker">Projects</p>
+    <h1>Tools for exploring large metagenomic datasets, and the unusual proteins they turn up.</h1>
 
     <div class="project-list">
       <article class="project" id="sharur">
-        <div>
+        <div class="project-head">
           <p class="project-meta">Metagenomic research system</p>
           <h2>Sharur</h2>
+          <p class="project-status">Pre-release</p>
         </div>
         <div class="project-body">
           <p>
@@ -59,7 +58,6 @@
             Independent AI agents can systematically rerun analyses, test
             falsification criteria, and vet claims before they move forward.
           </p>
-          <p>Sharur is currently pre-release.</p>
           <div class="project-links">
             <a href="/contact/">Contact me about access →</a>
           </div>
@@ -67,9 +65,10 @@
       </article>
 
       <article class="project" id="giant-proteins">
-        <div>
+        <div class="project-head">
           <p class="project-meta">Omnitrophota</p>
           <h2>Giant proteins</h2>
+          <p class="project-status">Preprint · 2023</p>
         </div>
         <div class="project-body">
           <p>
@@ -89,9 +88,10 @@
       </article>
 
       <article class="project" id="talea">
-        <div>
+        <div class="project-head">
           <p class="project-meta">Sequence → geometry</p>
           <h2>Talea</h2>
+          <p class="project-status">Public on GitHub</p>
         </div>
         <div class="project-body">
           <p>
@@ -113,9 +113,10 @@
       </article>
 
       <article class="project" id="elsa">
-        <div>
+        <div class="project-head">
           <p class="project-meta">Genome context</p>
           <h2>ELSA</h2>
+          <p class="project-status">Public on GitHub</p>
         </div>
         <div class="project-body">
           <p>
@@ -123,14 +124,14 @@
             language model embeddings as anchors, then join collinear hits into
             syntenic blocks.
           </p>
-          <p>
-            In the current public benchmark it recovers 98.9% of strict operons
-            with 97.1% ortholog precision and 99.9% search recall at 50 results.
-          </p>
-          <ul class="project-numbers">
-            <li>98.9% strict operon recall</li>
-            <li>97.1% ortholog precision</li>
-          </ul>
+          <figure class="project-figures">
+            <figcaption>Current public benchmark</figcaption>
+            <ul>
+              <li><strong>98.9%</strong><span>strict operon recall</span></li>
+              <li><strong>97.1%</strong><span>ortholog precision</span></li>
+              <li><strong>99.9%</strong><span>search recall at 50 results</span></li>
+            </ul>
+          </figure>
           <div class="project-links">
             <a href="https://github.com/jwestrob/ELSA" target="_blank" rel="noopener">Code ↗</a>
           </div>
@@ -138,19 +139,16 @@
       </article>
 
       <article class="project" id="gaia">
-        <div>
+        <div class="project-head">
           <p class="project-meta">Protein search</p>
           <h2>Gaia</h2>
+          <p class="project-status">Science Advances · 2025</p>
         </div>
         <div class="project-body">
           <p>
             I co-first-authored Gaia, a platform that uses genomic context to
             improve protein sequence search and annotation.
           </p>
-          <ul class="project-numbers">
-            <li>Co-first author</li>
-            <li>Science Advances · 2025</li>
-          </ul>
           <div class="project-links">
             <a href="https://doi.org/10.1126/sciadv.adv5109" target="_blank" rel="noopener">Gaia paper ↗</a>
           </div>
