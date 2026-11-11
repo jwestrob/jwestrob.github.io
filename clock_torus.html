@@ -6,7 +6,7 @@
     <title>Clock Torus — Jacob West‑Roberts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0A0A0A" />
-    <meta name="description" content="A protein wound on a torus by two angles that a protein language model keeps for every residue." />
+    <meta name="description" content="A protein wound on a torus by two angles read from linear projections of a protein language model's hidden state." />
     <link rel="canonical" href="https://jwestrob.github.io/clock_torus.html" />
     <link rel="icon" href="assets/poster/hero-poster.jpg">
     <link rel="stylesheet" href="assets/css/site.css" />
@@ -77,12 +77,12 @@
 
     <aside id="about" aria-label="About this piece">
         <p class="kicker">Clock Torus</p>
-        <p class="lede">A protein, wound on a torus by two angles that a protein language model keeps for every residue.</p>
+        <p class="lede">A protein, wound on a torus by two angles read from linear projections of a protein language model’s hidden state.</p>
         <details>
             <summary>About this piece</summary>
             <div class="body">
                 <h2>What you are looking at</h2>
-                <p>Every dot is one residue of a repeat protein. A protein language model reads the amino-acid sequence and holds a list of 1,152 numbers for each residue. From that list I read two angles, each with one fixed linear map:</p>
+                <p>Every dot is one residue of a repeat protein. A protein language model reads the amino-acid sequence and holds a list of 1,152 numbers for each residue, its hidden state. A linear projection carries that list onto a plane, where the residue becomes a point with an angle and a distance from the centre. I use two such projections, the same two for every protein, and take the angle from each:</p>
                 <ul>
                     <li><b>The repeat clock</b>, <var>θ</var><sub>1</sub>: where the residue sits inside its repeat unit. It turns once per repeat.</li>
                     <li><b>The helix face</b>, <var>θ</var><sub>2</sub>: which side of its α-helix the residue is on, measured from the direction of the rest of the protein. It turns once per helical turn, about 3.6 residues.</li>
@@ -104,7 +104,10 @@
                 <p>This turns the <var>x</var><sub>1</sub><var>x</var><sub>3</sub>-plane by <var>γ</var> and the <var>x</var><sub>2</sub><var>x</var><sub>4</sub>-plane by −<var>γ</var> at the same rate, an isoclinic rotation. It mixes the plane of the clock with the plane of the helix face, so the torus rolls through itself. It starts switched off; raise it in the controls to watch.</p>
 
                 <h2>How the angles are read</h2>
-                <p>Each angle is the argument of a complex number <var>z</var> = <var>W</var> · <var>h</var>, a linear readout of the model’s hidden state <var>h</var> at one layer (block 30 of 36). The two maps were fitted on repeat proteins with curated repeat units and known structures, and every protein shown here comes from a family left out of the fit that reads it. The model itself was trained on sequences alone.</p>
+                <p>Each angle comes from a linear projection of the hidden state <var>h</var> (1,152 numbers, taken at block 30 of the model’s 36) onto a plane:</p>
+                <span class="eq"><var>z</var> = <var>W</var> · (<var>h</var> − <var>μ</var>) / <var>σ</var></span>
+                <p><var>W</var> is a fixed complex vector. Its real and imaginary parts are the two directions that span the plane, and <var>μ</var> and <var>σ</var> are the mean and spread of each coordinate of <var>h</var>. The angle is the argument of <var>z</var>, and the length of <var>z</var> says how strong the signal is. The two steps that are not linear are taking that angle and rebuilding a point on the sphere from the angles for the drawing.</p>
+                <p>The two projections were fitted by ridge regression on repeat proteins with curated repeat units and known structures. Every protein shown here comes from a family left out of the fit that reads it. The model itself was trained on sequences alone.</p>
                 <p>The model is ESM C 600M, run through the ESM++ implementation.</p>
 
                 <h2>Controls</h2>
